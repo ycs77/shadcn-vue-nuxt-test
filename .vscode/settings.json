@@ -1,0 +1,14 @@
+{
+  "chat.mcp.serverSampling": {
+    "shadcn-vue-nuxt-test/.vscode/mcp.json: context7": {
+      "allowedModels": [
+        "copilot/claude-sonnet-4.5"
+      ]
+    },
+    "shadcn-vue-nuxt-test/.vscode/mcp.json: shadcn-ui": {
+      "allowedModels": [
+        "copilot/claude-sonnet-4.5"
+      ]
+    }
+  }
+}
