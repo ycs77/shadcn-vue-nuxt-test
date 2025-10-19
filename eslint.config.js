@@ -4,3 +4,8 @@ export default ycs77({
   vue: true,
   typescript: true,
 })
+  .append({
+    rules: {
+      'no-console': 'off',
+    },
+  })
