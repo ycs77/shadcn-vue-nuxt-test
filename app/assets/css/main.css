@@ -56,6 +56,16 @@
   --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
+
+  /* unovis colors */
+  --vis-tooltip-background-color: none !important;
+  --vis-tooltip-border-color: none !important;
+  --vis-tooltip-text-color: none !important;
+  --vis-tooltip-shadow-color: none !important;
+  --vis-tooltip-backdrop-filter: none !important;
+  --vis-tooltip-padding: none !important;
+
+  --vis-text-color: var(--muted-foreground);
 }
 
 .dark {

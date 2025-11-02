@@ -117,6 +117,40 @@
         </CardContent>
       </Card>
     </div>
+
+    <Card>
+      <CardHeader>
+        <div>
+          <CardTitle>Total Visitors</CardTitle>
+          <CardDescription>Total for the selected period</CardDescription>
+        </div>
+
+        <CardAction>
+          <Select v-model="selectedPeriod">
+            <SelectTrigger class="w-[180px]">
+              <SelectValue placeholder="Select period" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1week">
+                1 week
+              </SelectItem>
+              <SelectItem value="1month">
+                1 month
+              </SelectItem>
+              <SelectItem value="3months">
+                3 months
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </CardAction>
+      </CardHeader>
+      <AreaChart
+        :data="filteredData"
+        index="date"
+        :categories="['total', 'predicted']"
+        height="260px"
+      />
+    </Card>
   </div>
 </template>
 
@@ -124,9 +158,20 @@
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
+  CardAction,
 } from '@/components/ui/card'
+import { AreaChart } from '@/components/ui/chart-area'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { CalendarDate } from '@internationalized/date'
 
 definePageMeta({
   layout: 'dashboard',
@@ -135,5 +180,45 @@ definePageMeta({
 useSeoMeta({
   title: 'Dashboard - shadcn-vue Demo',
   description: 'Welcome to the dashboard page of our application.',
+})
+
+const selectedPeriod = ref('3months')
+
+const data: {
+  date: string
+  total: number
+  predicted: number
+}[] = []
+const startDate = new CalendarDate(2025, 2, 1)
+const endDate = new CalendarDate(2025, 4, 30)
+
+let currentDate = startDate
+while (currentDate.compare(endDate) <= 0) {
+  const dateStr = `${currentDate.year}/${String(currentDate.month).padStart(2, '0')}/${String(currentDate.day).padStart(2, '0')}`
+  data.push({
+    date: dateStr,
+    total: Math.floor(Math.random() * 2000) + 500,
+    predicted: Math.floor(Math.random() * 2000) + 500,
+  })
+  currentDate = currentDate.add({ days: 1 })
+}
+
+const filteredData = computed(() => {
+  let dataLength: number
+
+  switch (selectedPeriod.value) {
+    case '1week':
+      dataLength = 7
+      break
+    case '1month':
+      dataLength = 30
+      break
+    case '3months':
+    default:
+      dataLength = data.length
+      break
+  }
+
+  return data.slice(-dataLength)
 })
 </script>
