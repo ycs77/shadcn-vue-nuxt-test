@@ -63,9 +63,11 @@
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem as="a" href="/">
-            <LogOut />
-            Log out
+          <DropdownMenuItem as-child>
+            <NuxtLink to="/">
+              <LogOut />
+              Log out
+            </NuxtLink>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
