@@ -22,6 +22,9 @@ export default defineNuxtConfig({
     ],
     optimizeDeps: {
       include: [
+        '@internationalized/date',
+        '@unovis/ts',
+        '@unovis/vue',
         '@vue/devtools-core',
         '@vue/devtools-kit',
         'class-variance-authority',
