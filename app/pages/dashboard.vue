@@ -155,13 +155,14 @@
 </template>
 
 <script setup lang="ts">
+import { CalendarDate } from '@internationalized/date'
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  CardAction,
 } from '@/components/ui/card'
 import { AreaChart } from '@/components/ui/chart-area'
 import {
@@ -171,7 +172,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { CalendarDate } from '@internationalized/date'
 
 definePageMeta({
   layout: 'dashboard',
