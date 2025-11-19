@@ -1,18 +1,16 @@
 ---
-applyTo: "app/**/*.ts, app/**/*.vue, server/**/*.ts"
+applyTo: "app/**/*.ts, app/**/*.vue"
 ---
-
-## Basic Coding Style
-
-- Indent with 2 spaces
-- Use single quotes for strings
-- Use semicolons at the end of statements
-- Use PascalCase for component names
-- Use kebab-case for file names
-- Use Tailwind CSS for styling
 
 ## Vue.js Coding Style
 
 - Vue Composition API
 - Use `<script setup>` syntax
+- Prefer use inline props type declaration for `defineProps`
 - Prefer use `reactive()` to build form state
+
+## Composable Functions
+
+- Prefix composable function files with `use`, e.g., `useFetchData.ts`
+- Place composable functions in the `composables/` directory
+- Use named exports for composable functions
