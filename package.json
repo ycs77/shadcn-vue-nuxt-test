@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "eslint \"*.{js,ts,json}\" \"app/**/*.{ts,vue}\"",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && sh ./scripts/install-skills.sh"
   },
   "dependencies": {
     "@unovis/ts": "^1.6.2",
