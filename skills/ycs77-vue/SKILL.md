@@ -26,6 +26,8 @@ Always place `<template>` before `<script setup lang="ts">` in Single File Compo
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const title = ref('Hello World')
 </script>
 ```
@@ -33,6 +35,8 @@ const title = ref('Hello World')
 **Avoid:**
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const title = ref('Hello World')
 </script>
 
@@ -155,6 +159,7 @@ When using `ref()` with interface or complex object types, use type assertion wi
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import type { User } from '@/types'
+import { ref } from 'vue'
 
 // Complex type - use type assertion
 const user = ref() as Ref<User>
@@ -172,6 +177,7 @@ const status = ref<Status>(Status.Pending)
 ```vue
 <script setup lang="ts">
 import type { User } from '@/types'
+import { ref } from 'vue'
 
 // May cause: Type '...' is not assignable to type 'Ref<User>'
 const user = ref<User>()
@@ -193,6 +199,8 @@ When binding a prop or attribute where the variable name matches the attribute n
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const id = ref('app')
 const title = ref('Dashboard')
 const userName = ref('Lucas')  // Matches :user-name (kebab-case)
@@ -210,6 +218,8 @@ const isActive = ref(true)
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const id = ref('app')
 const title = ref('Dashboard')
 const userName = ref('Lucas')
