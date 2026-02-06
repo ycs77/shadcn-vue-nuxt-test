@@ -12,4 +12,4 @@ yarn
 cp .claude/settings.json .claude/settings.local.json
 ```
 
-Then edit `.claude/settings.local.json` to add your API keys for Context7 and GitHub.
+Then edit `.claude/settings.local.json` to add your API keys for GitHub.

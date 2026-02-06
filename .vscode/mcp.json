@@ -1,12 +1,6 @@
 {
   "inputs": [
     {
-      "id": "context7-api-key",
-      "type": "promptString",
-      "description": "Enter your Context7 API Key",
-      "password": true
-    },
-    {
       "id": "github-personal-access-token",
       "type": "promptString",
       "description": "Enter your GitHub Personal Access Token",
@@ -14,13 +8,6 @@
     }
   ],
   "servers": {
-    "context7": {
-      "type": "http",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": {
-        "CONTEXT7_API_KEY": "${input:context7-api-key}"
-      }
-    },
     "shadcn-ui": {
       "type": "stdio",
       "command": "npx",
