@@ -1,6 +1,6 @@
 ---
 name: ycs77-vue
-description: Lucas Yang's opinionated code style and conventions for Vue.js and TypeScript. Use when writing or reviewing Vue 3 components, or when the user mentions Lucas Yang's Vue coding style preferences.
+description: This skill should be used when writing, modifying, or reviewing Vue 3 Single File Components (SFCs) or TypeScript code in a Vue/Nuxt project. It covers opinionated conventions for SFC block order, defineProps/defineEmits typing, form state management with reactive(), ref type assertions, and same-name shorthand bindings. Activate when the user asks to create a Vue component, add a form, define component props or emits, set up reactive state, or follow project coding conventions.
 ---
 
 # Lucas Yang's Vue Conventions
