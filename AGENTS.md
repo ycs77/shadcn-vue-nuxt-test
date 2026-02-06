@@ -7,8 +7,20 @@
 - Nuxt 4
 - Vue 3
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS 4
 - shadcn/ui for Vue
+
+## Commands
+
+- `yarn dev` — dev server
+- `yarn build` — production build
+- `yarn lint` — ESLint for TypeScript and Vue files (uses `@ycs77/eslint-config`)
+- `yarn eslint [...files]` — ESLint for specific files (uses `@ycs77/eslint-config`)
+
+## Architecture
+
+- `app/` — application code (pages, components, layouts, composables)
+- `app/components/ui/` — shadcn-vue generated components, do not create manually
 
 ## Skills Activation Rules
 
