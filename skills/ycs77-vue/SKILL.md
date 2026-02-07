@@ -1,6 +1,6 @@
 ---
 name: ycs77-vue
-description: This skill should be used when applying project-specific opinionated Vue 3 conventions. It covers SFC block order (template-first vs script-first), inline typing for defineProps and defineEmits, using reactive() for form state management, ref type assertions with as Ref<Type> for complex types, and same-name shorthand bindings in Vue 3.4+. Relevant when a user asks about template ordering, how to type props or emits inline, reactive vs ref for forms, ref type assertion patterns, shorthand attribute bindings, or following Lucas Yang's Vue coding conventions.
+description: This skill should be used when applying project-specific opinionated Vue 3 conventions. It covers SFC block order (template-first vs script-first), inline typing for defineProps and defineEmits, using reactive() for form state management, ref type assertions with as Ref<Type> for complex types, same-name shorthand bindings in Vue 3.4+, and props access patterns in templates. Relevant when a user asks about template ordering, how to type props or emits inline, reactive vs ref for forms, ref type assertion patterns, shorthand attribute bindings, props usage in templates, or following Lucas Yang's Vue coding conventions.
 ---
 
 # Lucas Yang's Vue Conventions
@@ -228,4 +228,50 @@ const isActive = ref(true)
 </script>
 ```
 
-**Rationale**: Same-name shorthand reduces visual noise and follows the familiar JavaScript ES6 object property shorthand pattern. It makes templates more concise when variable names already describe the bound attribute clearly. Note that kebab-case attributes (`:user-name`) automatically match camelCase variables (`userName`).
+**Rationale**: Same-name shorthand reduces visual noise and follows the familiar JavaScript ES6 object property shorthand pattern. It makes templates more concise when variable names already describe the bound attribute clearly. Note that kebab-case attributes (`:user-name`) automatically match camelCase variables (`userName`). For props that require `props.` prefix (see Rule 6), do not use shorthand.
+
+### 6. Avoid `props.` Prefix in Templates
+
+Do not use `props.` prefix when accessing props in `<template>`. Vue's `<script setup>` destructures props into the template scope automatically, so the prefix is unnecessary. Only add `props.` when the prop name conflicts with a language keyword or HTML attribute (e.g., `class`, `as`). In those cases, do not apply same-name shorthand binding — always use the explicit `props.` form.
+
+**Good:**
+```vue
+<template>
+  <div :class="props.class">
+    <h1>{{ title }}</h1>
+    <component :is="props.as">content</component>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+
+const props = defineProps<{
+  title: string
+  as: string
+  class?: HTMLAttributes['class']
+}>()
+</script>
+```
+
+**Avoid:**
+```vue
+<template>
+  <div :class>
+    <h1>{{ props.title }}</h1>
+    <component :is="as">content</component>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+
+const props = defineProps<{
+  title: string
+  as: string
+  class?: HTMLAttributes['class']
+}>()
+</script>
+```
+
+**Rationale**: Omitting `props.` keeps templates concise and consistent with how `ref()` and `computed()` values are accessed. Language keywords and HTML attributes like `class` and `as` require `props.` to avoid conflicts, and must use explicit binding (`:class="props.class"`) instead of shorthand (`:class`) to prevent resolving to the wrong scope.
