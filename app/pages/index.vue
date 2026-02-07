@@ -31,24 +31,24 @@
       </h2>
       <div class="flex flex-col">
         <NuxtLink
-          v-for="(article, index) in articles"
-          :key="article.id"
-          :to="`/posts/${article.id}`"
+          v-for="(post, index) in posts"
+          :key="post.id"
+          :to="`/posts/${post.id}`"
           class="group cursor-pointer"
         >
           <div class="py-8">
-            <time class="text-xs text-[#6B7280]">{{ article.date }}</time>
+            <time class="text-xs text-[#6B7280]">{{ post.date }}</time>
             <h3 class="mt-3 text-xl font-bold leading-snug text-[#1A1A1A] transition-colors group-hover:text-[#6B7280] lg:text-2xl">
-              {{ article.title }}
+              {{ post.title }}
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-[#6B7280] lg:text-base">
-              {{ article.excerpt }}
+              {{ post.excerpt }}
             </p>
             <p class="mt-3 text-xs text-[#6B7280]/60">
-              By {{ article.author }} &middot; {{ article.readTime }}
+              By {{ post.author }} &middot; {{ post.readTime }}
             </p>
           </div>
-          <Separator v-if="index < articles.length - 1" class="bg-[#1A1A1A]/10" />
+          <Separator v-if="index < posts.length - 1" class="bg-[#1A1A1A]/10" />
         </NuxtLink>
       </div>
     </section>
@@ -113,6 +113,7 @@
 </template>
 
 <script setup lang="ts">
+import { posts } from '~~/data/posts'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
@@ -125,56 +126,5 @@ const stats = [
   { value: '12,000+', label: 'readers' },
   { value: '500+', label: 'articles' },
   { value: '50+', label: 'writers' },
-]
-
-const articles = [
-  {
-    id: 1,
-    title: 'The Slow Disappearance of Silence',
-    excerpt: 'In a world that never stops talking, silence has become the rarest luxury. This essay traces our relationship with quiet from monastery libraries to noise-cancelling headphones, and asks: what have we lost?',
-    date: 'January 15, 2026',
-    author: 'Clara Whitfield',
-    readTime: '12 min read',
-  },
-  {
-    id: 2,
-    title: 'Letters to No One: The Lost Art of Correspondence',
-    excerpt: 'Before email, before texts, there were letters. Real letters, written with care, sealed with intention. A meditation on what the death of letter-writing says about how we value connection.',
-    date: 'January 8, 2026',
-    author: 'Thomas Hale',
-    readTime: '9 min read',
-  },
-  {
-    id: 3,
-    title: 'The Cartography of Memory',
-    excerpt: 'We navigate our pasts like travelers without maps. A neuroscientist and a poet walk us through the landscapes of recollection, forgetting, and the stories we tell ourselves to fill the gaps.',
-    date: 'January 2, 2026',
-    author: 'Mira Fontaine',
-    readTime: '15 min read',
-  },
-  {
-    id: 4,
-    title: 'On Walking Without Purpose',
-    excerpt: 'The flaneur walks not to arrive but to observe. In the tradition of Baudelaire and Benjamin, we make a case for purposeless wandering as a radical act in an efficiency-obsessed culture.',
-    date: 'December 26, 2025',
-    author: 'Elliot Marsh',
-    readTime: '8 min read',
-  },
-  {
-    id: 5,
-    title: 'What Trees Know That We Have Forgotten',
-    excerpt: 'Beneath the forest floor, a vast network of roots and fungi connects trees in a web of mutual aid. What can this "wood wide web" teach us about community, patience, and survival?',
-    date: 'December 19, 2025',
-    author: 'Clara Whitfield',
-    readTime: '11 min read',
-  },
-  {
-    id: 6,
-    title: 'The Bookshop at the Edge of the World',
-    excerpt: 'On a wind-battered Scottish island, a second-hand bookshop defies every rule of modern retail. Its owner shares what three decades of selling books to strangers has taught him about human nature.',
-    date: 'December 12, 2025',
-    author: 'Thomas Hale',
-    readTime: '14 min read',
-  },
 ]
 </script>
