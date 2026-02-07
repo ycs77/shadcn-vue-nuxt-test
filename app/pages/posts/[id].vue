@@ -91,13 +91,6 @@ const post = computed(() => {
   return posts.find(p => p.id === id)
 })
 
-if (!post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Not Found',
-  })
-}
-
 const relatedPosts = computed(() => {
   if (!post.value) return []
   return posts
@@ -105,9 +98,17 @@ const relatedPosts = computed(() => {
     .slice(0, 3)
 })
 
+if (!post.value) {
+  throw createError({
+    status: 404,
+    statusText: 'Not Found',
+    fatal: true,
+  })
+}
+
 useSeoMeta({
-  title: () => post.value ? `${post.value.title} - Papyrus` : 'Essay Not Found - Papyrus',
-  description: () => post.value?.excerpt ?? '',
+  title: () => `${post.value!.title} - Papyrus`,
+  description: () => post.value!.excerpt,
 })
 </script>
 
