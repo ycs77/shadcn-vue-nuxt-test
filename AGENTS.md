@@ -24,5 +24,14 @@
 
 ## Skills Activation Rules
 
-- **When writing, modifying, or reviewing Vue 3 Single File Components (SFCs)**: load `vue`, `vue-best-practices`, `ycs77-vue`, and `nuxt` skills. When rules conflict, `ycs77-vue` takes precedence as the project-level convention.
-- **When working on Nuxt-specific files** (server routes, middleware, plugins, composables, `nuxt.config.ts`): load `ycs77-vue` and `nuxt` skills.
+`ycs77-vue` is the project-level convention — when rules conflict, always follow `ycs77-vue`.
+
+- **When writing, modifying, or reviewing Vue 3 SFCs**, load ALL of the following skills:
+  1. `vue`
+  2. `vue-best-practices`
+  3. `ycs77-vue`
+  4. `nuxt`
+
+- **When working on Nuxt-specific files** (server routes, middleware, plugins, composables, `nuxt.config.ts`), load:
+  1. `ycs77-vue`
+  2. `nuxt`
