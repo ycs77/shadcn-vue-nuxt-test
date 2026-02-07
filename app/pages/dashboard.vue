@@ -126,36 +126,91 @@
         </div>
 
         <CardAction>
-          <Select v-model="selectedPeriod">
-            <SelectTrigger class="w-[180px]">
-              <SelectValue placeholder="Select period" />
+          <Select v-model="timeRange">
+            <SelectTrigger class="w-[180px]" aria-label="Select a value">
+              <SelectValue placeholder="Last 3 months" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="1week">
-                1 week
+              <SelectItem value="90d">
+                3 months
               </SelectItem>
-              <SelectItem value="1month">
+              <SelectItem value="30d">
                 1 month
               </SelectItem>
-              <SelectItem value="3months">
-                3 months
+              <SelectItem value="7d">
+                1 week
               </SelectItem>
             </SelectContent>
           </Select>
         </CardAction>
       </CardHeader>
-      <AreaChart
-        :data="filteredData"
-        index="date"
-        :categories="['total', 'predicted']"
-        height="260px"
-      />
+
+      <CardContent>
+        <ChartContainer :config="chartConfig" class="aspect-auto h-[250px] w-full" :cursor="false">
+          <VisXYContainer
+            :data="filteredData"
+            :svg-defs
+            :margin="{ left: -40 }"
+            :y-domain="[0, 6000]"
+          >
+            <VisArea
+              :x="(d: Data) => d.date"
+              :y="[(d: Data) => d.predicted, (d: Data) => d.total]"
+              :color="(d: Data, i: number) => ['url(#fillPredicted)', 'url(#fillTotal)'][i]"
+              :opacity="0.6"
+            />
+            <VisLine
+              :x="(d: Data) => d.date"
+              :y="[(d: Data) => d.predicted, (d: Data) => d.predicted + d.total]"
+              :color="(d: Data, i: number) => [chartConfig.predicted.color, chartConfig.total.color][i]"
+              :line-width="1"
+            />
+            <VisAxis
+              type="x"
+              :x="(d: Data) => d.date"
+              :tick-line="false"
+              :domain-line="false"
+              :grid-line="false"
+              :num-ticks="6"
+              :tick-format="(d: number, index: number) => {
+                const date = new Date(d)
+                return date.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                })
+              }"
+            />
+            <VisAxis
+              type="y"
+              :num-ticks="3"
+              :tick-line="false"
+              :domain-line="false"
+            />
+            <ChartTooltip />
+            <ChartCrosshair
+              :template="componentToString(chartConfig, ChartTooltipContent, {
+                labelFormatter: (d) => {
+                  return new Date(d).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                  })
+                },
+              })"
+              :color="(d: Data, i: number) => [chartConfig.predicted.color, chartConfig.total.color][i % 2]"
+            />
+          </VisXYContainer>
+
+          <ChartLegendContent />
+        </ChartContainer>
+      </CardContent>
     </Card>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { ChartConfig } from '@/components/ui/chart'
 import { CalendarDate } from '@internationalized/date'
+import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
 import {
   Card,
   CardAction,
@@ -164,7 +219,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { AreaChart } from '@/components/ui/chart-area'
+import {
+  ChartContainer,
+  ChartCrosshair,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+  componentToString,
+} from '@/components/ui/chart'
 import {
   Select,
   SelectContent,
@@ -172,6 +234,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+
+interface Data {
+  date: Date
+  total: number
+  predicted: number
+}
 
 definePageMeta({
   layout: 'dashboard',
@@ -182,21 +250,17 @@ useSeoMeta({
   description: 'Welcome to the dashboard page of our application.',
 })
 
-const selectedPeriod = ref('3months')
+const timeRange = ref('90d')
 
-const data: {
-  date: string
-  total: number
-  predicted: number
-}[] = []
+const data: Data[] = []
 const startDate = new CalendarDate(2025, 2, 1)
 const endDate = new CalendarDate(2025, 4, 30)
 
 let currentDate = startDate
 while (currentDate.compare(endDate) <= 0) {
-  const dateStr = `${currentDate.year}/${String(currentDate.month).padStart(2, '0')}/${String(currentDate.day).padStart(2, '0')}`
+  const date = new Date(currentDate.year, currentDate.month - 1, currentDate.day)
   data.push({
-    date: dateStr,
+    date,
     total: Math.floor(Math.random() * 2000) + 500,
     predicted: Math.floor(Math.random() * 2000) + 500,
   })
@@ -204,21 +268,52 @@ while (currentDate.compare(endDate) <= 0) {
 }
 
 const filteredData = computed(() => {
-  let dataLength: number
+  let dataLength = data.length
 
-  switch (selectedPeriod.value) {
-    case '1week':
-      dataLength = 7
-      break
-    case '1month':
-      dataLength = 30
-      break
-    case '3months':
-    default:
-      dataLength = data.length
-      break
+  if (timeRange.value === '7d') {
+    dataLength = 7
+  } else if (timeRange.value === '30d') {
+    dataLength = 30
   }
 
   return data.slice(-dataLength)
 })
+
+const chartConfig = {
+  total: {
+    label: 'Total',
+    color: 'var(--chart-1)',
+  },
+  predicted: {
+    label: 'Predicted',
+    color: 'var(--chart-2)',
+  },
+} satisfies ChartConfig
+
+const svgDefs = `
+  <linearGradient id="fillTotal" x1="0" y1="0" x2="0" y2="1">
+    <stop
+      offset="5%"
+      stop-color="var(--color-total)"
+      stop-opacity="0.8"
+    />
+    <stop
+      offset="95%"
+      stop-color="var(--color-total)"
+      stop-opacity="0.1"
+    />
+  </linearGradient>
+  <linearGradient id="fillPredicted" x1="0" y1="0" x2="0" y2="1">
+    <stop
+      offset="5%"
+      stop-color="var(--color-predicted)"
+      stop-opacity="0.8"
+    />
+    <stop
+      offset="95%"
+      stop-color="var(--color-predicted)"
+      stop-opacity="0.1"
+    />
+  </linearGradient>
+`
 </script>

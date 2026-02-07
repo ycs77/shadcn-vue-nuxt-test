@@ -1,9 +1,10 @@
 <template>
   <TooltipRoot
+    v-slot="slotProps"
     data-slot="tooltip"
     v-bind="forwarded"
   >
-    <slot />
+    <slot v-bind="slotProps" />
   </TooltipRoot>
 </template>
 

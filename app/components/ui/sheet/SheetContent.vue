@@ -14,7 +14,7 @@
         side === 'bottom' &&
           'data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t',
         props.class)"
-      v-bind="{ ...forwarded, ...$attrs }"
+      v-bind="{ ...$attrs, ...forwarded }"
     >
       <slot />
 
@@ -36,7 +36,6 @@ import { X } from 'lucide-vue-next'
 import {
   DialogClose,
   DialogContent,
-
   DialogPortal,
   useForwardPropsEmits,
 } from 'reka-ui'

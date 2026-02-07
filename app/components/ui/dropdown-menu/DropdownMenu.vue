@@ -1,9 +1,10 @@
 <template>
   <DropdownMenuRoot
+    v-slot="slotProps"
     data-slot="dropdown-menu"
     v-bind="forwarded"
   >
-    <slot />
+    <slot v-bind="slotProps" />
   </DropdownMenuRoot>
 </template>
 

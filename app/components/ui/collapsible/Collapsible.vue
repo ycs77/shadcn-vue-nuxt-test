@@ -1,10 +1,10 @@
 <template>
   <CollapsibleRoot
-    v-slot="{ open }"
+    v-slot="slotProps"
     data-slot="collapsible"
     v-bind="forwarded"
   >
-    <slot :open />
+    <slot v-bind="slotProps" />
   </CollapsibleRoot>
 </template>
 
