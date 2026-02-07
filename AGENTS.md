@@ -21,6 +21,28 @@
 
 - `app/` — application code (pages, components, layouts, composables)
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
+- `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
+- `app/lib/` — shared utilities
+
+## Page Zones
+
+- **Public** — Papyrus style, default layout
+  - `/`
+  - `/posts/[id]`
+- **Dashboard** — shadcn default style, dashboard layout
+  - `/dashboard`
+- **Login** — shadcn default style, default layout
+  - `/login`
+
+## Frontend Design (Public)
+
+Public pages use a **Papyrus E-Ink / Paper** style.
+
+- **Palette** — Paper `#FDFBF7` background, Ink `#1A1A1A` text/buttons, `#6B7280` secondary text, `#1A1A1A`/10% borders
+- **Font** — Merriweather (Google Fonts) site-wide, including buttons
+- **Layout** — max-w-2xl centered, no images, no shadows, no rounded corners
+- **Shared blocks** — Navbar (Logo + Sign In) and Footer (Copyright + links) appear on every public page
+- **Components** — shadcn-vue `Button` and `Separator` with Ink/Paper overrides; icons from `lucide-vue-next`
 
 ## Skills Activation Rules
 
