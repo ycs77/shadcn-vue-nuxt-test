@@ -6,8 +6,5 @@
       "Bash(yarn lint --fix)",
       "Bash(yarn eslint *)"
     ]
-  },
-  "env": {
-    "GITHUB_PERSONAL_ACCESS_TOKEN": ""
   }
 }

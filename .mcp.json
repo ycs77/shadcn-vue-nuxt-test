@@ -1,18 +1,14 @@
 {
   "mcpServers": {
-    "shadcn-ui": {
+    "shadcn-vue": {
       "type": "stdio",
       "command": "cmd",
       "args": [
         "/c",
         "npx",
-        "@jpisnice/shadcn-ui-mcp-server",
-        "--framework",
-        "vue"
-      ],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
-      }
+        "shadcn-vue@latest",
+        "mcp"
+      ]
     }
   }
 }
