@@ -20,6 +20,7 @@
 ## Architecture
 
 - `app/` — application code (pages, components, layouts, composables)
+- `app/pages/` — Nuxt file-based routing
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
 - `app/lib/` — shared utilities
