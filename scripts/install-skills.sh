@@ -1,4 +1,4 @@
-npx skills add antfu/skills\
+npx skills add antfu/skills \
   --agent claude-code \
   --skill vue \
   --skill vue-best-practices \
