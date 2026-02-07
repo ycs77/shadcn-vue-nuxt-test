@@ -46,17 +46,8 @@
       </div>
     </article>
 
-    <!-- Not Found -->
-    <div v-else class="mx-auto max-w-2xl px-6 py-20 text-center">
-      <h1 class="text-2xl font-bold text-[#1A1A1A]">Essay not found</h1>
-      <p class="mt-3 text-sm text-[#6B7280]">The essay you're looking for doesn't exist.</p>
-      <NuxtLink to="/" class="mt-6 inline-block cursor-pointer text-sm text-[#6B7280] transition-colors hover:text-[#1A1A1A]">
-        Back to home
-      </NuxtLink>
-    </div>
-
     <!-- More Essays -->
-    <section v-if="post && relatedPosts.length > 0" class="border-t border-[#1A1A1A]/10">
+    <section v-if="relatedPosts.length > 0" class="border-t border-[#1A1A1A]/10">
       <div class="mx-auto max-w-2xl px-6 py-12">
         <h2 class="mb-8 text-xs font-bold uppercase tracking-[0.2em] text-[#6B7280]">
           Continue Reading
@@ -99,6 +90,13 @@ const post = computed(() => {
   const id = Number(route.params.id)
   return posts.find(p => p.id === id)
 })
+
+if (!post.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Not Found',
+  })
+}
 
 const relatedPosts = computed(() => {
   if (!post.value) return []
