@@ -1,6 +1,6 @@
 ---
 name: ycs77-vue
-description: This skill should be used when writing, modifying, or reviewing Vue 3 Single File Components (SFCs) or TypeScript code in a Vue/Nuxt project. It covers opinionated conventions for SFC block order, defineProps/defineEmits typing, form state management with reactive(), ref type assertions, and same-name shorthand bindings. Activate when the user asks to create a Vue component, add a form, define component props or emits, set up reactive state, or follow project coding conventions.
+description: This skill should be used when applying project-specific opinionated Vue 3 conventions. It covers SFC block order (template-first vs script-first), inline typing for defineProps and defineEmits, using reactive() for form state management, ref type assertions with as Ref<Type> for complex types, and same-name shorthand bindings in Vue 3.4+. Relevant when a user asks about template ordering, how to type props or emits inline, reactive vs ref for forms, ref type assertion patterns, shorthand attribute bindings, or following Lucas Yang's Vue coding conventions.
 ---
 
 # Lucas Yang's Vue Conventions
@@ -9,7 +9,7 @@ Opinionated Vue 3 and TypeScript patterns emphasizing minimal boilerplate, reada
 
 ## TypeScript Formatting
 
-**Standard**: 2 spaces, single quotes, no semicolons, trailing commas
+**Standard**: 2 spaces, single quotes, no semicolons, trailing commas.
 
 ## Vue SFC Patterns
 
@@ -164,7 +164,7 @@ import { ref } from 'vue'
 // Complex type - use type assertion
 const user = ref() as Ref<User>
 const users = ref([]) as Ref<User[]>
-const isSelectedUser = ref(null) as Ref<User | null>
+const isSelectedUser = ref(null) as Ref<User | null>  // Prefer null over undefined
 
 // Primitive types - generic parameter is fine
 const count = ref<number>(0)
@@ -184,7 +184,7 @@ const user = ref<User>()
 </script>
 ```
 
-**Rationale**: Using type assertion `as Ref<Type>` with complex types prevents common TypeScript errors while maintaining type safety. This pattern is especially important when the ref is initialized without a value or with `undefined`.
+**Rationale**: Vue's official documentation recommends `ref<Type>()`, but this project prefers type assertion `as Ref<Type>` for complex types to avoid type conflicts while maintaining type safety.
 
 ### 5. Use Same-name Shorthand for Bindings
 
