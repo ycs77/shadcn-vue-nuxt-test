@@ -14,8 +14,8 @@
 
 - `yarn dev` — dev server
 - `yarn build` — production build
-- `yarn lint` — ESLint for TypeScript and Vue files (uses `@ycs77/eslint-config`)
-- `yarn eslint [...files]` — ESLint for specific files (uses `@ycs77/eslint-config`)
+- `yarn lint --fix` — ESLint for TypeScript and Vue files with auto-fix (uses `@ycs77/eslint-config`)
+- `yarn eslint [...files] --fix` — ESLint for specific files with auto-fix (uses `@ycs77/eslint-config`)
 
 ## Architecture
 
