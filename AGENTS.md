@@ -36,7 +36,7 @@
 
 ## Frontend Design (Public)
 
-Public pages use a **Papyrus E-Ink / Paper** style.
+Public pages use a **Papyrus E-Ink / Paper** style — paper-like, calm, distraction-free, ultra-minimal, reading-focused.
 
 - **Palette** — Paper `#FDFBF7` background, Ink `#1A1A1A` text/buttons, `#6B7280` secondary text, `#1A1A1A`/10% borders
 - **Font** — Merriweather (Google Fonts) site-wide, including buttons
