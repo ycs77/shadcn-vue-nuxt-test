@@ -27,10 +27,12 @@
       </div>
     </SidebarInset>
   </SidebarProvider>
+  <AppToaster />
 </template>
 
 <script setup lang="ts">
 import AppSidebar from '@/components/AppSidebar.vue'
+import AppToaster from '@/components/AppToaster.vue'
 import {
   Breadcrumb,
   BreadcrumbItem,
