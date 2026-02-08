@@ -1,6 +1,9 @@
 ---
 name: ycs77-vue
 description: This skill should be used when applying project-specific opinionated Vue 3 conventions. It covers SFC block order (template-first vs script-first), inline typing for defineProps and defineEmits, using reactive() for form state management, ref type assertions with as Ref<Type> for complex types, same-name shorthand bindings in Vue 3.4+, and props access patterns in templates. Relevant when a user asks about template ordering, how to type props or emits inline, reactive vs ref for forms, ref type assertion patterns, shorthand attribute bindings, props usage in templates, or following Lucas Yang's Vue coding conventions.
+metadata:
+  author: Lucas Yang
+  version: "2026.02.07"
 ---
 
 # Lucas Yang's Vue Conventions
