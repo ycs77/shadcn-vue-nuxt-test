@@ -9,19 +9,24 @@
       </DialogHeader>
 
       <form @submit="onSubmit">
-        <FormField v-slot="{ componentField }" name="name">
-          <FormItem>
-            <FormLabel>Name</FormLabel>
-            <FormControl>
+        <FieldGroup>
+          <VeeField v-slot="{ field, errors }" name="name">
+            <Field :data-invalid="!!errors.length">
+              <FieldLabel for="category-form-name">
+                Name
+              </FieldLabel>
               <Input
-                v-bind="componentField"
+                id="category-form-name"
+                v-bind="field"
                 placeholder="Category name"
                 :disabled="isLoading"
+                autocomplete="off"
+                :aria-invalid="!!errors.length"
               />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        </FormField>
+              <FieldError v-if="errors.length" :errors />
+            </Field>
+          </VeeField>
+        </FieldGroup>
 
         <DialogFooter class="mt-4">
           <DialogClose as-child>
@@ -41,7 +46,7 @@
 <script setup lang="ts">
 import type { Category } from '~~/shared/types/category'
 import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
+import { useForm, Field as VeeField } from 'vee-validate'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import {
@@ -54,12 +59,11 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 
 const props = defineProps<{
@@ -74,19 +78,27 @@ const emit = defineEmits<{
 const open = defineModel<boolean>('open', { default: false })
 
 const schema = toTypedSchema(z.object({
-  name: z.string().min(1, 'Name is required').max(50, 'Name must be 50 characters or less'),
+  name: z
+    .string()
+    .min(1, 'Name is required')
+    .max(50, 'Name must be 50 characters or less'),
 }))
 
 const { handleSubmit, resetForm } = useForm({
   validationSchema: schema,
+  initialValues: {
+    name: '',
+  },
 })
 
 watch(open, isOpen => {
   if (isOpen) {
-    resetForm({
-      values: {
-        name: props.category?.name ?? '',
-      },
+    nextTick(() => {
+      resetForm({
+        values: {
+          name: props.category?.name,
+        },
+      })
     })
   }
 })
