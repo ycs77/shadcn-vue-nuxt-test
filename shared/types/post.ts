@@ -1,4 +1,6 @@
-export interface Post {
+import type { Model } from './model'
+
+export interface Post extends Model {
   id: number
   title: string
   excerpt: string

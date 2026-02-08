@@ -1,4 +1,6 @@
-export interface User {
+import type { Model } from './model'
+
+export interface User extends Model {
   id: number
   avatar: string
   name: string

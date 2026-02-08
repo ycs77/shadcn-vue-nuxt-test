@@ -10,38 +10,11 @@
       </Button>
     </div>
 
-    <div class="rounded-md border">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead class="w-[100px]">
-              Posts
-            </TableHead>
-            <TableHead class="w-[70px]">
-              <span class="sr-only">Actions</span>
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableEmpty v-if="categoriesWithCount.length === 0" :colspan="3">
-            No categories found.
-          </TableEmpty>
-          <TableRow v-for="category in categoriesWithCount" :key="category.id">
-            <TableCell class="font-medium">
-              {{ category.name }}
-            </TableCell>
-            <TableCell>{{ category.postCount }}</TableCell>
-            <TableCell>
-              <CategoryActions
-                @edit="openEditDialog(category)"
-                @delete="openDeleteDialog(category)"
-              />
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </div>
+    <DataTable
+      :columns
+      :data="categoriesWithCount"
+      empty-text="No categories found."
+    />
 
     <!-- Create/Edit Dialog -->
     <CategoryFormDialog
@@ -62,22 +35,15 @@
 </template>
 
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import type { Category } from '~~/shared/types/category'
 import { Plus } from 'lucide-vue-next'
 import { toast } from 'vue-sonner'
-import CategoryActions from '@/components/dashboard/categories/CategoryActions.vue'
 import CategoryDeleteDialog from '@/components/dashboard/categories/CategoryDeleteDialog.vue'
 import CategoryFormDialog from '@/components/dashboard/categories/CategoryFormDialog.vue'
+import { createColumns } from '@/components/dashboard/categories/columns'
+import DataTable from '@/components/data-table/DataTable.vue'
 import { Button } from '@/components/ui/button'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableEmpty,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
 
 definePageMeta({
   layout: 'dashboard',
@@ -94,14 +60,19 @@ useSeoMeta({
 
 const { categoriesWithCount } = useCategories()
 
+const columns = createColumns({
+  onEdit: openEditDialog,
+  onDelete: openDeleteDialog,
+})
+
 // Form dialog state
 const formDialogOpen = ref(false)
-const editingCategory = ref<Category | null>(null)
+const editingCategory = ref(null) as Ref<Category | null>
 const isSubmitting = ref(false)
 
 // Delete dialog state
 const deleteDialogOpen = ref(false)
-const deletingCategory = ref<Category | null>(null)
+const deletingCategory = ref(null) as Ref<Category | null>
 const isDeleting = ref(false)
 
 function openCreateDialog() {
