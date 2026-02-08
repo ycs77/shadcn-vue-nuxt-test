@@ -12,7 +12,7 @@ import LoginForm from '@/components/LoginForm.vue'
 const appConfig = useAppConfig()
 
 useSeoMeta({
-  title: `Login - ${appConfig.name}`,
+  title: `Login - ${appConfig.title}`,
   description: 'Login page demo using shadcn-vue login-01 block',
 })
 </script>

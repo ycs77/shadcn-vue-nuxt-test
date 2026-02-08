@@ -54,7 +54,7 @@ const appConfig = useAppConfig()
 const route = useRoute()
 
 useSeoMeta({
-  titleTemplate: `%s - ${appConfig.name}`,
+  titleTemplate: `%s - ${appConfig.title}`,
   description: appConfig.description,
 })
 
