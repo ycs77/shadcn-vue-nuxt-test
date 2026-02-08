@@ -10,15 +10,17 @@
         />
         <Breadcrumb>
           <BreadcrumbList>
-            <BreadcrumbItem class="hidden md:block">
-              <BreadcrumbLink href="#">
-                Building Your Application
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator class="hidden md:block" />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-            </BreadcrumbItem>
+            <template v-for="(crumb, index) in breadcrumbs" :key="crumb.title">
+              <BreadcrumbSeparator v-if="index > 0" class="hidden md:block" />
+              <BreadcrumbItem :class="{ 'hidden md:block': index < breadcrumbs.length - 1 }">
+                <BreadcrumbLink v-if="crumb.url" :href="crumb.url">
+                  {{ crumb.title }}
+                </BreadcrumbLink>
+                <BreadcrumbPage v-else>
+                  {{ crumb.title }}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </template>
           </BreadcrumbList>
         </Breadcrumb>
       </header>
@@ -47,4 +49,16 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar'
+
+const appConfig = useAppConfig()
+const route = useRoute()
+
+useSeoMeta({
+  titleTemplate: `%s - ${appConfig.name}`,
+  description: appConfig.description,
+})
+
+const breadcrumbs = computed(() => {
+  return (route.meta.breadcrumbs as { title: string, url?: string }[]) ?? []
+})
 </script>

@@ -2087,10 +2087,22 @@
     "@tailwindcss/oxide" "4.1.18"
     tailwindcss "4.1.18"
 
+"@tanstack/table-core@8.21.3":
+  version "8.21.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.21.3.tgz#2977727d8fc8dfa079112d9f4d4c019110f1732c"
+  integrity sha512-ldZXEhOBb8Is7xLs01fR3YEc3DERiz5silj8tnGkFZytt1abEvl/GhUmCE0PMLaMPTa3Jk4HbKmRlHmu+gCftg==
+
 "@tanstack/virtual-core@3.13.18":
   version "3.13.18"
   resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.13.18.tgz#586e3c1fe08547ee6abf87e8fb7c99087b9c47ff"
   integrity sha512-Mx86Hqu1k39icq2Zusq+Ey2J6dDWTjDvEv43PJtRCoEYTLyfaPnxIQ6iy7YAOK0NV/qOEmZQ/uCufrppZxTgcg==
+
+"@tanstack/vue-table@^8.21.3":
+  version "8.21.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/vue-table/-/vue-table-8.21.3.tgz#09498ba5bbe5eca5aa665f9b76876da22715bb28"
+  integrity sha512-rusRyd77c5tDPloPskctMyPLFEQUeBzxdQ+2Eow4F7gDPlPOB1UnnhzfpdvqZ8ZyX2rRNGmqNnQWm87OI2OQPw==
+  dependencies:
+    "@tanstack/table-core" "8.21.3"
 
 "@tanstack/vue-virtual@^3.12.0":
   version "3.13.18"

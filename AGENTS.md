@@ -39,15 +39,18 @@
 - `AppSidebar` — dashboard sidebar, composes TeamSwitcher + NavMain + NavUser
 - `AppToaster` — vue-sonner toast wrapper (top-center, close button, rich colors)
 - `LoginForm` — email/password login card (demo: demo@example.com / password)
-- `NavMain` — collapsible sidebar nav group with icon + sub-items
+- `NavMain` — collapsible sidebar nav group with icon + sub-items; supports direct link items (no sub-items)
 - `NavUser` — sidebar user avatar + dropdown (Account, Billing, Notifications, Log out)
 - `PublicFooter` — public page footer (copyright + Privacy/RSS links)
 - `PublicNavbar` — public page navbar (site logo + Sign In link)
 - `TeamSwitcher` — dashboard team selector dropdown
+- `dashboard/categories/CategoryActions` — category row dropdown (Edit, Delete)
+- `dashboard/categories/CategoryFormDialog` — create/edit category dialog with VeeValidate + Zod
+- `dashboard/categories/CategoryDeleteDialog` — delete confirmation alert dialog
 
 ### Installed shadcn-vue Components (`app/components/ui/`)
 
-avatar, breadcrumb, button, card, chart, collapsible, dropdown-menu, input, label, select, separator, sheet, sidebar, skeleton, sonner, tooltip
+alert-dialog, avatar, breadcrumb, button, card, chart, collapsible, dialog, dropdown-menu, form, input, label, select, separator, sheet, sidebar, skeleton, sonner, table, tooltip
 
 To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
@@ -58,6 +61,7 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
   - `/posts/[id]`
 - **Dashboard** — shadcn default style, dashboard layout
   - `/dashboard`
+  - `/dashboard/categories`
 - **Login** — shadcn default style, default layout
   - `/login`
 

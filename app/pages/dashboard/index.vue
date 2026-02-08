@@ -243,11 +243,13 @@ interface Data {
 
 definePageMeta({
   layout: 'dashboard',
+  breadcrumbs: [
+    { title: 'Dashboard' },
+  ],
 })
 
 useSeoMeta({
-  title: 'Dashboard - shadcn-vue Demo',
-  description: 'Welcome to the dashboard page of our application.',
+  title: 'Dashboard',
 })
 
 const timeRange = ref('90d')

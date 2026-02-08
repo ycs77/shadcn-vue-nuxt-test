@@ -18,12 +18,12 @@ import type { SidebarProps } from '@/components/ui/sidebar'
 
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
+  FileText,
   GalleryVerticalEnd,
-  Settings2,
-  SquareTerminal,
+  LayoutDashboard,
+  Settings,
+  Users,
 } from 'lucide-vue-next'
 import { currentUser } from '~~/data/current-user'
 import NavMain from '@/components/NavMain.vue'
@@ -42,7 +42,6 @@ const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: 'icon',
 })
 
-// This is sample data.
 const data = {
   user: currentUser,
   teams: [
@@ -64,87 +63,42 @@ const data = {
   ],
   navMain: [
     {
-      title: 'Playground',
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: LayoutDashboard,
+    },
+    {
+      title: 'Posts',
       url: '#',
-      icon: SquareTerminal,
-      isActive: true,
+      icon: FileText,
       items: [
         {
-          title: 'History',
-          url: '#',
+          title: 'All Posts',
+          url: '/dashboard/posts',
         },
         {
-          title: 'Starred',
-          url: '#',
-        },
-        {
-          title: 'Settings',
-          url: '#',
+          title: 'Categories',
+          url: '/dashboard/categories',
         },
       ],
     },
     {
-      title: 'Models',
-      url: '#',
-      icon: Bot,
-      items: [
-        {
-          title: 'Genesis',
-          url: '#',
-        },
-        {
-          title: 'Explorer',
-          url: '#',
-        },
-        {
-          title: 'Quantum',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#',
-        },
-        {
-          title: 'Get Started',
-          url: '#',
-        },
-        {
-          title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
-          url: '#',
-        },
-      ],
+      title: 'Users',
+      url: '/dashboard/users',
+      icon: Users,
     },
     {
       title: 'Settings',
       url: '#',
-      icon: Settings2,
+      icon: Settings,
       items: [
         {
-          title: 'General',
-          url: '#',
+          title: 'Profile',
+          url: '/dashboard/settings/profile',
         },
         {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
+          title: 'Account',
+          url: '/dashboard/settings/account',
         },
       ],
     },
