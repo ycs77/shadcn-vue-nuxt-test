@@ -8,11 +8,15 @@
 - Vue 3
 - TypeScript
 - Tailwind CSS 4
-- shadcn-vue — shadcn/ui for Vue
-- @unovis/vue — charts (area, line; used in dashboard)
-- reka-ui — headless UI primitives (shadcn-vue dependency)
-- vue-sonner — toast notifications
-- class-variance-authority + clsx + tailwind-merge — component styling utilities
+- `shadcn-vue` — shadcn/ui for Vue
+- `@unovis/vue` — charts (area, line; used in dashboard)
+- `reka-ui` — headless UI primitives (shadcn-vue dependency)
+- `vue-sonner` — toast notifications
+- `@tanstack/vue-table` — data table utilities (used with shadcn-vue Table)
+- `vee-validate + @vee-validate/zod + zod` — form validation and schema definition
+- `@vueuse/core` — Vue composition utilities
+- `lucide-vue-next` — icon library
+- `class-variance-authority + clsx + tailwind-merge` — component styling utilities
 
 ## Commands
 
@@ -28,6 +32,8 @@
 - `app/components/` — Vue components (UI + page-specific)
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
+- `app/composables/` — Vue composables
+- `app/assets/` — global CSS and static assets
 - `app/lib/` — shared utilities (`cn()` class merge helper)
 - `data/` — mock data (fake datasets for development)
 - `shared/types/` — shared TypeScript type definitions
@@ -58,9 +64,9 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
 ### Common Patterns
 
-- Toast notifications via Sonner, see `AppToaster.vue` for example usage and styling
-- Forms with VeeValidate + zod schemas, follow the reference: https://www.shadcn-vue.com/raw/docs/forms/vee-validate.md
-- DataTable for tabular data, follow the reference: https://www.shadcn-vue.com/raw/docs/components/data-table.md
+- **Toast** — via Sonner, see `app/components/AppToaster.vue` for settings and styling
+- **Forms** — VeeValidate + Zod schema validation, follow the reference: https://www.shadcn-vue.com/raw/docs/forms/vee-validate.md
+- **DataTable** — shadcn-vue does not provide a pre-built DataTable component; build custom DataTable per page by composing TanStack Table + shadcn-vue Table. When creating, editing, or designing a DataTable, always follow the reference: https://www.shadcn-vue.com/raw/docs/components/data-table.md
 
 ## Page Zones
 
