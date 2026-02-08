@@ -106,8 +106,10 @@ if (!post.value) {
   })
 }
 
+const appConfig = useAppConfig()
+
 useSeoMeta({
-  title: () => `${post.value!.title} - Papyrus`,
+  title: () => `${post.value!.title} - ${appConfig.title}`,
   description: () => post.value!.excerpt,
 })
 </script>

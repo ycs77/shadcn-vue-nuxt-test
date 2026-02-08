@@ -28,8 +28,10 @@ const props = defineProps<{
   error: NuxtError
 }>()
 
+const appConfig = useAppConfig()
+
 useSeoMeta({
-  title: `${props.error.status === 404 ? 'Page Not Found' : 'Error'} - Papyrus`,
+  title: `${props.error.status === 404 ? 'Page Not Found' : 'Error'} - ${appConfig.title}`,
 })
 
 function handleError() {

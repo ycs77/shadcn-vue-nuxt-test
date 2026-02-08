@@ -117,9 +117,11 @@ import { posts } from '~~/data/posts'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
+const appConfig = useAppConfig()
+
 useSeoMeta({
-  title: 'Papyrus - Words That Stay With You',
-  description: 'A quiet corner of the internet for long-form writing, thoughtful essays, and stories that reward your attention.',
+  title: `${appConfig.title} - Words That Stay With You`,
+  description: appConfig.description,
 })
 
 const stats = [
