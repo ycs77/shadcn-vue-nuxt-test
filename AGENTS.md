@@ -34,7 +34,7 @@
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
 - `app/composables/` — Vue composables
 - `app/assets/` — global CSS and static assets
-- `app/lib/` — shared utilities (`cn()` class merge helper)
+- `app/lib/` — shared utilities (`cn()` class merge helper, `valueUpdater()` for TanStack Table)
 - `data/` — mock data (fake datasets for development)
 - `shared/types/` — shared TypeScript type definitions
 
