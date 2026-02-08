@@ -25,14 +25,14 @@
 
 - `app/` — application code (pages, components, layouts, composables)
 - `app/pages/` — Nuxt file-based routing
-- `app/components` — Vue components (UI + page-specific)
+- `app/components/` — Vue components (UI + page-specific)
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
 - `app/lib/` — shared utilities (`cn()` class merge helper)
 - `data/` — mock data (fake datasets for development)
 - `shared/types/` — shared TypeScript type definitions
 
-## Existing Components
+## Components
 
 ### Application Components (`app/components/`)
 
@@ -48,11 +48,19 @@
 - `dashboard/categories/CategoryFormDialog` — create/edit category dialog with VeeValidate + Zod
 - `dashboard/categories/CategoryDeleteDialog` — delete confirmation alert dialog
 
-### Installed shadcn-vue Components (`app/components/ui/`)
+## shadcn-vue
+
+### Installed Components (`app/components/ui/`)
 
 alert-dialog, avatar, breadcrumb, button, card, chart, collapsible, dialog, dropdown-menu, form, input, label, select, separator, sheet, sidebar, skeleton, sonner, table, tooltip
 
 To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
+
+### Common Patterns
+
+- Toast notifications via Sonner, see `AppToaster.vue` for example usage and styling
+- Forms with VeeValidate + zod schemas, follow the reference: https://www.shadcn-vue.com/raw/docs/forms/vee-validate.md
+- DataTable for tabular data, follow the reference: https://www.shadcn-vue.com/raw/docs/components/data-table.md
 
 ## Page Zones
 
@@ -74,20 +82,6 @@ Public pages use a **E-Ink / Paper** style — paper-like, calm, distraction-fre
 - **Layout** — max-w-2xl centered, no images, no shadows, no rounded corners
 - **Shared blocks** — Navbar (Logo + Sign In) and Footer (Copyright + links) appear on every public page
 - **Components** — shadcn-vue `Button` and `Separator` with Ink/Paper overrides; icons from `lucide-vue-next`
-
-## Forms (VeeValidate + Zod)
-
-When building forms, follow the shadcn-vue VeeValidate integration pattern.
-Reference: https://www.shadcn-vue.com/raw/docs/forms/vee-validate.md
-
-- **Packages** — `vee-validate`, `zod`, `@vee-validate/zod`
-- **Flow** — Zod schema → `useForm({ validationSchema: toTypedSchema(schema) })` → `handleSubmit`
-- **Field binding** — `<VeeField v-slot="{ field, errors }">` wrapping shadcn `<Field>` / `<FieldLabel>` / `<FieldError>`
-  - Input / Textarea: `v-bind="field"`
-  - Select / RadioGroup / Switch: `:model-value="field.value"` + `@update:model-value="field.onChange"`
-- **Invalid state** — `:data-invalid="!!errors.length"` on `<Field>`, `:aria-invalid="!!errors.length"` on control
-- **Dynamic arrays** — `<VeeFieldArray v-slot="{ fields, push, remove }">`, use `field.key` as `:key`
-- **Validation modes** — `validateOnInput`, `validateOnChange`, `validateOnBlur`, `validateOnMount` props on `<VeeField>`
 
 ## Skills Activation Rules
 
