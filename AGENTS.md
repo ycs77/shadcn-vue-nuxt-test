@@ -31,6 +31,8 @@
 - `app/pages/` — Nuxt file-based routing
 - `app/components/` — Vue components (UI + page-specific)
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
+- `app/components/data-table/` — reusable DataTable components
+- `app/components/dashboard/` — dashboard page-specific components
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
 - `app/composables/` — Vue composables
 - `app/assets/` — global CSS and static assets
@@ -50,7 +52,7 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
 - **Toast** — via Sonner, see `app/components/AppToaster.vue` for settings and styling
 - **Forms** — VeeValidate + shadcn-vue `<Field />` layout components + Zod schema validation, follow the reference: @docs/shadcn-vue/forms/vee-validate.md
-- **DataTable** — shadcn-vue does not provide a pre-built DataTable component; build custom DataTable per page by composing TanStack Table + shadcn-vue Table. When creating, editing, or designing a DataTable, always follow the reference: @docs/shadcn-vue/components/data-table.md
+- **DataTable** — prefer using the reusable DataTable components in `app/components/data-table/`. Only build a custom DataTable when business logic cannot be satisfied by the shared components. When creating, editing, or designing a DataTable, always follow the reference: @docs/shadcn-vue/components/data-table.md
 
 ## Page Zones
 
@@ -68,7 +70,7 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 Public pages use a **E-Ink / Paper** style — paper-like, calm, distraction-free, ultra-minimal, reading-focused.
 
 - **Palette** — Paper `#FDFBF7` background, Ink `#1A1A1A` text/buttons, `#6B7280` secondary text, `#1A1A1A`/10% borders
-- **Font** — Merriweather (Google Fonts) site-wide, including buttons
+- **Font** — Merriweather (Google Fonts) for all public pages, including buttons
 - **Layout** — max-w-2xl centered, no images, no shadows, no rounded corners
 - **Shared blocks** — Navbar (Logo + Sign In) and Footer (Copyright + links) appear on every public page
 - **Components** — shadcn-vue `Button` and `Separator` with Ink/Paper overrides; icons from `lucide-vue-next`
