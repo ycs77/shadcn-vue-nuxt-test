@@ -8,7 +8,11 @@
 - Vue 3
 - TypeScript
 - Tailwind CSS 4
-- shadcn/ui for Vue
+- shadcn-vue — shadcn/ui for Vue
+- @unovis/vue — charts (area, line; used in dashboard)
+- reka-ui — headless UI primitives (shadcn-vue dependency)
+- vue-sonner — toast notifications
+- class-variance-authority + clsx + tailwind-merge — component styling utilities
 
 ## Commands
 
@@ -21,11 +25,31 @@
 
 - `app/` — application code (pages, components, layouts, composables)
 - `app/pages/` — Nuxt file-based routing
+- `app/components` — Vue components (UI + page-specific)
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
-- `app/lib/` — shared utilities
+- `app/lib/` — shared utilities (`cn()` class merge helper)
 - `data/` — mock data (fake datasets for development)
 - `shared/types/` — shared TypeScript type definitions
+
+## Existing Components
+
+### Application Components (`app/components/`)
+
+- `AppSidebar` — dashboard sidebar, composes TeamSwitcher + NavMain + NavUser
+- `AppToaster` — vue-sonner toast wrapper (top-center, close button, rich colors)
+- `LoginForm` — email/password login card (demo: demo@example.com / password)
+- `NavMain` — collapsible sidebar nav group with icon + sub-items
+- `NavUser` — sidebar user avatar + dropdown (Account, Billing, Notifications, Log out)
+- `PublicFooter` — public page footer (copyright + Privacy/RSS links)
+- `PublicNavbar` — public page navbar (site logo + Sign In link)
+- `TeamSwitcher` — dashboard team selector dropdown
+
+### Installed shadcn-vue Components (`app/components/ui/`)
+
+avatar, breadcrumb, button, card, chart, collapsible, dropdown-menu, input, label, select, separator, sheet, sidebar, skeleton, sonner, tooltip
+
+To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
 ## Page Zones
 
