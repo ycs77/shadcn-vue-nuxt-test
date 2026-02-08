@@ -24,6 +24,8 @@
 - `app/components/ui/` — shadcn-vue generated components, do not create manually
 - `app/layouts/` — Nuxt layouts (`default`, `dashboard`)
 - `app/lib/` — shared utilities
+- `data/` — mock data (fake datasets for development)
+- `shared/types/` — shared TypeScript type definitions
 
 ## Page Zones
 

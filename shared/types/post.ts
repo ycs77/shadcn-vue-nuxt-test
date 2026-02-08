@@ -7,4 +7,7 @@ export interface Post {
   authorBio: string
   readTime: string
   body: string[]
+  categoryId: number
+  status: 'published' | 'draft'
+  views: number
 }

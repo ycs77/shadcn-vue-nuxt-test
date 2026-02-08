@@ -9,6 +9,9 @@ export const posts: Post[] = [
     author: 'Clara Whitfield',
     authorBio: 'Clara is the founder of Papyrus and writes about culture, attention, and the things we overlook in the rush of modern life.',
     readTime: '12 min read',
+    categoryId: 1,
+    status: 'published',
+    views: 2841,
     body: [
       'There was a time when silence was ordinary. It filled the spaces between conversations, settled over towns after dark, and accompanied the long hours of solitary work. It was not something people sought out, because it was simply there — a baseline, a given, the canvas on which the sounds of life were painted.',
       'That world is gone. Today, silence is a commodity. We pay for noise-cancelling headphones, book silent retreats, and download apps that simulate the sound of nothing. The very fact that we need technology to access quiet tells us something profound about what we have built.',
@@ -26,6 +29,9 @@ export const posts: Post[] = [
     author: 'Thomas Hale',
     authorBio: 'Thomas writes about language, tradition, and the quiet ways we communicate across time and distance.',
     readTime: '9 min read',
+    categoryId: 6,
+    status: 'published',
+    views: 1523,
     body: [
       'The last handwritten letter I received arrived six years ago. It was from my grandmother, written in her careful, slanting script on pale blue stationery. She wrote about the weather, the garden, a book she was reading. Ordinary things, made extraordinary by the effort of committing them to paper.',
       'Letter-writing was once the primary technology of intimacy. Lovers separated by war, friends divided by oceans, children away at school — all relied on the slow, deliberate exchange of words on paper to maintain the bonds that mattered most.',
@@ -42,6 +48,9 @@ export const posts: Post[] = [
     author: 'Mira Fontaine',
     authorBio: 'Mira explores the intersection of science and the humanities, with a particular interest in how we construct meaning from experience.',
     readTime: '15 min read',
+    categoryId: 5,
+    status: 'published',
+    views: 3672,
     body: [
       'Memory is not a recording. This is the first thing any neuroscientist will tell you, and it is the hardest thing for most of us to accept. We experience our memories as faithful reproductions of the past — vivid, detailed, true. They are none of these things.',
       'Every time we recall an event, we reconstruct it. The brain does not retrieve a stored file; it reassembles fragments — a smell here, an emotion there, a visual detail borrowed from a photograph we saw years later. The result feels seamless, but it is a collage.',
@@ -59,6 +68,9 @@ export const posts: Post[] = [
     author: 'Elliot Marsh',
     authorBio: 'Elliot writes about philosophy, urban life, and the art of paying attention to what others pass by.',
     readTime: '8 min read',
+    categoryId: 3,
+    status: 'published',
+    views: 1987,
     body: [
       'To walk without a destination is, in our culture, a minor act of rebellion. We are a people of purposes, of step-counts and optimized routes, of walking meetings and power walks. The idea of simply walking — with no goal, no podcast, no fitness tracker — strikes many as wasteful.',
       'But the flaneur, that great figure of nineteenth-century Paris, understood something essential: that walking without purpose is its own reward. The flaneur walks to see, to think, to be surprised. The flaneur walks because the city reveals itself only to those who are not in a hurry.',
@@ -75,6 +87,9 @@ export const posts: Post[] = [
     author: 'Clara Whitfield',
     authorBio: 'Clara is the founder of Papyrus and writes about culture, attention, and the things we overlook in the rush of modern life.',
     readTime: '11 min read',
+    categoryId: 2,
+    status: 'published',
+    views: 2456,
     body: [
       'Beneath every forest is a hidden world. A vast network of fungal threads — mycorrhizae — connects the roots of trees in a web so complex that scientists have taken to calling it the "wood wide web." Through this network, trees share nutrients, send chemical warnings about pests, and even nurture their young.',
       'The oldest trees, the ones foresters call "mother trees," are the most connected. They sit at the centre of the network, linked to hundreds of neighbours, channelling resources to seedlings that struggle in the shade. When a mother tree is felled, the network weakens. Sometimes it collapses entirely.',
@@ -91,6 +106,9 @@ export const posts: Post[] = [
     author: 'Thomas Hale',
     authorBio: 'Thomas writes about language, tradition, and the quiet ways we communicate across time and distance.',
     readTime: '14 min read',
+    categoryId: 4,
+    status: 'published',
+    views: 3105,
     body: [
       'The bookshop sits at the end of a single-track road on an island where the population is outnumbered by sheep. It has no website, no social media presence, and no particular reason to exist — except that it has existed for thirty years, and people keep coming.',
       'Its owner, a man who left London in his twenties with a van full of books and a vague idea, will tell you that running a bookshop is the worst possible business decision a person can make. He will tell you this while making you a cup of tea and recommending a novel he thinks you need to read.',

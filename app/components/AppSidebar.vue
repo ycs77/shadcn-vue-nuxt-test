@@ -25,6 +25,7 @@ import {
   Settings2,
   SquareTerminal,
 } from 'lucide-vue-next'
+import { currentUser } from '~~/data/current-user'
 import NavMain from '@/components/NavMain.vue'
 import NavUser from '@/components/NavUser.vue'
 import TeamSwitcher from '@/components/TeamSwitcher.vue'
@@ -43,11 +44,7 @@ const props = withDefaults(defineProps<SidebarProps>(), {
 
 // This is sample data.
 const data = {
-  user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: 'https://www.shadcn-vue.com/avatars/shadcn.jpg',
-  },
+  user: currentUser,
   teams: [
     {
       name: 'Acme Inc',
