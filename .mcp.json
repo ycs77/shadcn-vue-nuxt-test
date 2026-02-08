@@ -6,6 +6,7 @@
       "args": [
         "/c",
         "npx",
+        "-y",
         "shadcn-vue@latest",
         "mcp"
       ]
