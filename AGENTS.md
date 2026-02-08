@@ -45,6 +45,20 @@ Public pages use a **E-Ink / Paper** style — paper-like, calm, distraction-fre
 - **Shared blocks** — Navbar (Logo + Sign In) and Footer (Copyright + links) appear on every public page
 - **Components** — shadcn-vue `Button` and `Separator` with Ink/Paper overrides; icons from `lucide-vue-next`
 
+## Forms (VeeValidate + Zod)
+
+When building forms, follow the shadcn-vue VeeValidate integration pattern.
+Reference: https://www.shadcn-vue.com/raw/docs/forms/vee-validate.md
+
+- **Packages** — `vee-validate`, `zod`, `@vee-validate/zod`
+- **Flow** — Zod schema → `useForm({ validationSchema: toTypedSchema(schema) })` → `handleSubmit`
+- **Field binding** — `<VeeField v-slot="{ field, errors }">` wrapping shadcn `<Field>` / `<FieldLabel>` / `<FieldError>`
+  - Input / Textarea: `v-bind="field"`
+  - Select / RadioGroup / Switch: `:model-value="field.value"` + `@update:model-value="field.onChange"`
+- **Invalid state** — `:data-invalid="!!errors.length"` on `<Field>`, `:aria-invalid="!!errors.length"` on control
+- **Dynamic arrays** — `<VeeFieldArray v-slot="{ fields, push, remove }">`, use `field.key` as `:key`
+- **Validation modes** — `validateOnInput`, `validateOnChange`, `validateOnBlur`, `validateOnMount` props on `<VeeField>`
+
 ## Skills Activation Rules
 
 `ycs77-vue` is the project-level convention — when rules conflict, always follow `ycs77-vue`.
