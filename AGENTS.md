@@ -38,22 +38,6 @@
 - `data/` — mock data (fake datasets for development)
 - `shared/types/` — shared TypeScript type definitions
 
-## Components
-
-### Application Components (`app/components/`)
-
-- `AppSidebar` — dashboard sidebar, composes TeamSwitcher + NavMain + NavUser
-- `AppToaster` — vue-sonner toast wrapper (top-center, close button, rich colors)
-- `LoginForm` — email/password login card (demo: demo@example.com / password)
-- `NavMain` — collapsible sidebar nav group with icon + sub-items; supports direct link items (no sub-items)
-- `NavUser` — sidebar user avatar + dropdown (Account, Billing, Notifications, Log out)
-- `PublicFooter` — public page footer (copyright + Privacy/RSS links)
-- `PublicNavbar` — public page navbar (site logo + Sign In link)
-- `TeamSwitcher` — dashboard team selector dropdown
-- `dashboard/categories/CategoryActions` — category row dropdown (Edit, Delete)
-- `dashboard/categories/CategoryFormDialog` — create/edit category dialog with VeeValidate + Zod
-- `dashboard/categories/CategoryDeleteDialog` — delete confirmation alert dialog
-
 ## shadcn-vue
 
 ### Installed Components (`app/components/ui/`)
