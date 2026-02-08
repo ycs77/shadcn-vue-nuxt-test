@@ -65,8 +65,8 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 ### Common Patterns
 
 - **Toast** — via Sonner, see `app/components/AppToaster.vue` for settings and styling
-- **Forms** — VeeValidate + Zod schema validation, follow the reference: https://www.shadcn-vue.com/raw/docs/forms/vee-validate.md
-- **DataTable** — shadcn-vue does not provide a pre-built DataTable component; build custom DataTable per page by composing TanStack Table + shadcn-vue Table. When creating, editing, or designing a DataTable, always follow the reference: https://www.shadcn-vue.com/raw/docs/components/data-table.md
+- **Forms** — VeeValidate + Zod schema validation, follow the reference: @docs/shadcn-vue/forms/vee-validate.md
+- **DataTable** — shadcn-vue does not provide a pre-built DataTable component; build custom DataTable per page by composing TanStack Table + shadcn-vue Table. When creating, editing, or designing a DataTable, always follow the reference: @docs/shadcn-vue/components/data-table.md
 
 ## Page Zones
 
