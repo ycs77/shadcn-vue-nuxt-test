@@ -20,7 +20,6 @@
 
 ## Commands
 
-- `yarn dev` — dev server
 - `yarn build` — production build
 - `yarn lint --fix` — ESLint for TypeScript and Vue files with auto-fix (uses `@ycs77/eslint-config`)
 - `yarn eslint [...files] --fix` — ESLint for specific files with auto-fix
@@ -44,7 +43,7 @@
 
 ### Installed Components (`app/components/ui/`)
 
-alert-dialog, avatar, breadcrumb, button, card, chart, collapsible, dialog, dropdown-menu, field, input, label, select, separator, sheet, sidebar, skeleton, sonner, table, tooltip
+alert-dialog, avatar, badge, breadcrumb, button, calendar, card, chart, collapsible, dialog, dropdown-menu, field, input, label, native-select, popover, select, separator, sheet, sidebar, skeleton, sonner, table, textarea, tooltip
 
 To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
@@ -52,7 +51,7 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
 - **Toast** — powered by Sonner. See `app/components/AppToaster.vue` for configuration and styling.
 - **Forms** — use VeeValidate with shadcn-vue `<Field />` components and Zod schema validation. Follow @docs/shadcn-vue/forms/vee-validate.md for all form work.
-- **DataTable** — use the shared components in `app/components/data-table/`. Create a custom DataTable only if shared components lack the needed capability. Follow @docs/shadcn-vue/components/data-table.md for all DataTable work.
+- **DataTable** — use the shared components in `app/components/data-table/`. The shared DataTable supports optional search, filter dropdowns, and pagination via props (all off by default). Create a custom DataTable only if shared components lack the needed capability. Follow @docs/shadcn-vue/components/data-table.md for all DataTable work.
 
 ## Page Zones
 
@@ -61,7 +60,8 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
   - `/posts/[id]`
 - **Dashboard** — shadcn default style, dashboard layout
   - `/dashboard`
-  - `/dashboard/categories`
+  - `/dashboard/posts` — list, create, edit pages
+  - `/dashboard/categories` — list page only
 - **Login** — shadcn default style, default layout
   - `/login`
 

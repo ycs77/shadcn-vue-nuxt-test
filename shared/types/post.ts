@@ -13,3 +13,7 @@ export interface Post extends Model {
   status: 'published' | 'draft'
   views: number
 }
+
+export interface PostWithCategory extends Post {
+  categoryName: string
+}
