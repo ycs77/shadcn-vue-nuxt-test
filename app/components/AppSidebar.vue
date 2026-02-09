@@ -66,6 +66,7 @@ const data = {
       title: 'Dashboard',
       url: '/dashboard',
       icon: LayoutDashboard,
+      isActive: '^/dashboard$',
     },
     {
       title: 'Posts',
@@ -75,10 +76,12 @@ const data = {
         {
           title: 'All Posts',
           url: '/dashboard/posts',
+          isActive: '^/dashboard/posts(/|$)',
         },
         {
           title: 'Categories',
           url: '/dashboard/categories',
+          isActive: '^/dashboard/categories(/|$)',
         },
       ],
     },
@@ -86,6 +89,7 @@ const data = {
       title: 'Users',
       url: '/dashboard/users',
       icon: Users,
+      isActive: '^/dashboard/users(/|$)',
     },
     {
       title: 'Settings',
@@ -95,10 +99,12 @@ const data = {
         {
           title: 'Profile',
           url: '/dashboard/settings/profile',
+          isActive: '^/dashboard/settings/profile(/|$)',
         },
         {
           title: 'Account',
           url: '/dashboard/settings/account',
+          isActive: '^/dashboard/settings/account(/|$)',
         },
       ],
     },

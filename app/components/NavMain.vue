@@ -1,12 +1,12 @@
 <template>
   <SidebarGroup>
     <SidebarMenu>
-      <template v-for="item in items" :key="item.title">
+      <template v-for="(item, index) in items" :key="item.title">
         <!-- Items with sub-items: collapsible -->
         <Collapsible
           v-if="item.items?.length"
+          v-model:open="openStates[index]"
           as-child
-          :default-open="item.isActive"
           class="group/collapsible"
         >
           <SidebarMenuItem>
@@ -20,7 +20,7 @@
             <CollapsibleContent>
               <SidebarMenuSub>
                 <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
-                  <SidebarMenuSubButton as-child>
+                  <SidebarMenuSubButton as-child :is-active="matchActive(subItem.isActive)">
                     <NuxtLink :to="subItem.url">
                       <span>{{ subItem.title }}</span>
                     </NuxtLink>
@@ -33,7 +33,7 @@
 
         <!-- Items without sub-items: direct link -->
         <SidebarMenuItem v-else>
-          <SidebarMenuButton as-child :tooltip="item.title">
+          <SidebarMenuButton as-child :tooltip="item.title" :is-active="matchActive(item.isActive)">
             <NuxtLink :to="item.url">
               <component :is="item.icon" v-if="item.icon" />
               <span>{{ item.title }}</span>
@@ -63,16 +63,42 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar'
 
-defineProps<{
+const props = defineProps<{
   items: {
     title: string
     url: string
     icon?: LucideIcon
-    isActive?: boolean
+    isActive?: string
     items?: {
       title: string
       url: string
+      isActive?: string
     }[]
   }[]
 }>()
+
+const route = useRoute()
+
+function matchActive(pattern?: string) {
+  if (!pattern) return false
+  return new RegExp(pattern).test(route.path)
+}
+
+function isGroupActive(item: { items?: { isActive?: string }[] }) {
+  return item.items?.some(subItem => matchActive(subItem.isActive)) ?? false
+}
+
+const openStates = reactive<Record<number, boolean>>(
+  Object.fromEntries(
+    props.items.map((item, index) => [index, isGroupActive(item)]),
+  ),
+)
+
+watch(() => route.path, () => {
+  props.items.forEach((item, index) => {
+    if (item.items?.length && isGroupActive(item)) {
+      openStates[index] = true
+    }
+  })
+})
 </script>
