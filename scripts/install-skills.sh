@@ -12,4 +12,8 @@ npx skills add ./skills \
   --skill '*' \
   -y
 
-npx uipro-cli init --ai claude --force
+# Will remove on PR merged: https://github.com/vercel-labs/skills/pull/314
+mkdir -p .gemini
+cp -r .agents/skills/* .gemini/skills/
+
+npx uipro-cli init --ai claude --ai gemini --force

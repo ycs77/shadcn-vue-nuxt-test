@@ -26,6 +26,7 @@ logs
 # Agent Skills
 .agents/skills
 .claude/skills
+.gemini/skills
 
 # Claude Code
 .claude/settings.local.json
