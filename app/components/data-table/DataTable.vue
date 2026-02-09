@@ -63,24 +63,7 @@
     </div>
 
     <!-- Pagination -->
-    <div v-if="paginated" class="flex items-center justify-end gap-2 py-4">
-      <Button
-        variant="outline"
-        size="sm"
-        :disabled="!table.getCanPreviousPage()"
-        @click="table.previousPage()"
-      >
-        Previous
-      </Button>
-      <Button
-        variant="outline"
-        size="sm"
-        :disabled="!table.getCanNextPage()"
-        @click="table.nextPage()"
-      >
-        Next
-      </Button>
-    </div>
+    <DataTablePagination v-if="paginated" :table class="py-4" />
   </div>
 </template>
 
@@ -96,7 +79,6 @@ import {
   getSortedRowModel,
   useVueTable,
 } from '@tanstack/vue-table'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
   Select,
