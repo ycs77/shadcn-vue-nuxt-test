@@ -59,7 +59,7 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
   - `/`
   - `/posts/[id]`
 - **Dashboard** — shadcn default style, dashboard layout
-  - `/dashboard`
+  - `/dashboard` — overview with stats cards, views trend chart, recent posts, category overview
   - `/dashboard/posts` — list, create, edit pages
   - `/dashboard/categories` — list page only
 - **Login** — shadcn default style, default layout

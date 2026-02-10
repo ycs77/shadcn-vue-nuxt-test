@@ -8,111 +8,67 @@
       <Card class="gap-0">
         <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle class="text-sm font-medium">
-            Total Revenue
+            Total Posts
           </CardTitle>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            class="h-4 w-4 text-muted-foreground"
-          >
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-          </svg>
+          <FileTextIcon class="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div class="text-2xl font-bold">
-            $45,231.89
+            {{ totalPosts }}
+          </div>
+          <p class="text-xs text-muted-foreground">
+            +2 new this month
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card class="gap-0">
+        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle class="text-sm font-medium">
+            Total Views
+          </CardTitle>
+          <EyeIcon class="h-4 w-4 text-muted-foreground" />
+        </CardHeader>
+        <CardContent>
+          <div class="text-2xl font-bold">
+            {{ totalViews.toLocaleString('en-US') }}
           </div>
           <p class="text-xs text-muted-foreground">
             +20.1% from last month
           </p>
         </CardContent>
       </Card>
+
       <Card class="gap-0">
         <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle class="text-sm font-medium">
-            Subscriptions
+            Categories
           </CardTitle>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            class="h-4 w-4 text-muted-foreground"
-          >
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
+          <FolderOpenIcon class="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div class="text-2xl font-bold">
-            +2350
+            {{ totalCategories }}
           </div>
           <p class="text-xs text-muted-foreground">
-            +180.1% from last month
+            3 categories with new posts
           </p>
         </CardContent>
       </Card>
+
       <Card class="gap-0">
         <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle class="text-sm font-medium">
-            Sales
+            Total Users
           </CardTitle>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            class="h-4 w-4 text-muted-foreground"
-          >
-            <rect width="20" height="14" x="2" y="5" rx="2" />
-            <path d="M2 10h20" />
-          </svg>
+          <UsersIcon class="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div class="text-2xl font-bold">
-            +12,234
+            {{ totalUsers }}
           </div>
           <p class="text-xs text-muted-foreground">
-            +19% from last month
-          </p>
-        </CardContent>
-      </Card>
-      <Card class="gap-0">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle class="text-sm font-medium">
-            Active Now
-          </CardTitle>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            class="h-4 w-4 text-muted-foreground"
-          >
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-          </svg>
-        </CardHeader>
-        <CardContent>
-          <div class="text-2xl font-bold">
-            +573
-          </div>
-          <p class="text-xs text-muted-foreground">
-            +201 since last hour
+            +24 new this month
           </p>
         </CardContent>
       </Card>
@@ -121,14 +77,14 @@
     <Card>
       <CardHeader>
         <div>
-          <CardTitle>Total Visitors</CardTitle>
-          <CardDescription>Total for the selected period</CardDescription>
+          <CardTitle>Views Trend</CardTitle>
+          <CardDescription>Views trend for the selected period</CardDescription>
         </div>
 
         <CardAction>
           <Select v-model="timeRange">
             <SelectTrigger class="w-[180px]" aria-label="Select a value">
-              <SelectValue placeholder="Last 3 months" />
+              <SelectValue placeholder="3 months" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="90d">
@@ -154,25 +110,25 @@
             :y-domain="[0, 6000]"
           >
             <VisArea
-              :x="(d: Data) => d.date"
-              :y="[(d: Data) => d.predicted, (d: Data) => d.total]"
-              :color="(d: Data, i: number) => ['url(#fillPredicted)', 'url(#fillTotal)'][i]"
+              :x="(d: ChartData) => d.date"
+              :y="[(d: ChartData) => d.predicted, (d: ChartData) => d.actual]"
+              :color="(_d: ChartData, i: number) => ['url(#fillPredicted)', 'url(#fillActual)'][i]"
               :opacity="0.6"
             />
             <VisLine
-              :x="(d: Data) => d.date"
-              :y="[(d: Data) => d.predicted, (d: Data) => d.predicted + d.total]"
-              :color="(d: Data, i: number) => [chartConfig.predicted.color, chartConfig.total.color][i]"
+              :x="(d: ChartData) => d.date"
+              :y="[(d: ChartData) => d.predicted, (d: ChartData) => d.predicted + d.actual]"
+              :color="(_d: ChartData, i: number) => [chartConfig.predicted.color, chartConfig.actual.color][i]"
               :line-width="1"
             />
             <VisAxis
               type="x"
-              :x="(d: Data) => d.date"
+              :x="(d: ChartData) => d.date"
               :tick-line="false"
               :domain-line="false"
               :grid-line="false"
               :num-ticks="6"
-              :tick-format="(d: number, index: number) => {
+              :tick-format="(d: number) => {
                 const date = new Date(d)
                 return date.toLocaleDateString('en-US', {
                   month: 'short',
@@ -196,7 +152,7 @@
                   })
                 },
               })"
-              :color="(d: Data, i: number) => [chartConfig.predicted.color, chartConfig.total.color][i % 2]"
+              :color="(_d: ChartData, i: number) => [chartConfig.predicted.color, chartConfig.actual.color][i % 2]"
             />
           </VisXYContainer>
 
@@ -204,6 +160,67 @@
         </ChartContainer>
       </CardContent>
     </Card>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Posts</CardTitle>
+          <CardDescription>Latest 5 published posts</CardDescription>
+        </CardHeader>
+        <CardContent class="space-y-4">
+          <div
+            v-for="post in recentPosts"
+            :key="post.id"
+            class="flex items-center justify-between gap-4"
+          >
+            <div class="min-w-0 flex-1 space-y-1">
+              <NuxtLink
+                :to="`/dashboard/posts/${post.id}/edit`"
+                class="truncate text-sm font-medium hover:underline"
+              >
+                {{ post.title }}
+              </NuxtLink>
+              <div class="flex items-center gap-2">
+                <Badge variant="outline">
+                  {{ post.categoryName }}
+                </Badge>
+                <Badge :variant="post.status === 'published' ? 'default' : 'secondary'">
+                  {{ post.status }}
+                </Badge>
+              </div>
+            </div>
+            <div class="shrink-0 text-xs text-muted-foreground">
+              {{ post.date }}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Category Overview</CardTitle>
+          <CardDescription>Post count and proportion by category</CardDescription>
+        </CardHeader>
+        <CardContent class="space-y-4">
+          <div
+            v-for="category in categoriesWithCount"
+            :key="category.id"
+            class="space-y-1"
+          >
+            <div class="flex items-center justify-between text-sm">
+              <span>{{ category.name }}</span>
+              <span class="text-muted-foreground">{{ category.postCount }} posts</span>
+            </div>
+            <div class="h-2 w-full rounded-full bg-muted">
+              <div
+                class="h-2 rounded-full bg-primary"
+                :style="{ width: `${totalPosts > 0 ? (category.postCount / totalPosts) * 100 : 0}%` }"
+              />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   </div>
 </template>
 
@@ -211,6 +228,9 @@
 import type { ChartConfig } from '@/components/ui/chart'
 import { CalendarDate } from '@internationalized/date'
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
+import { Eye as EyeIcon, FileText as FileTextIcon, FolderOpen as FolderOpenIcon, Users as UsersIcon } from 'lucide-vue-next'
+import { users } from '~~/data/users'
+import { Badge } from '@/components/ui/badge'
 import {
   Card,
   CardAction,
@@ -235,9 +255,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-interface Data {
+interface ChartData {
   date: Date
-  total: number
+  actual: number
   predicted: number
 }
 
@@ -252,25 +272,35 @@ useSeoMeta({
   title: 'Dashboard',
 })
 
+const { postsWithCategory } = usePosts()
+const { categoriesWithCount } = useCategories()
+
+const totalPosts = computed(() => postsWithCategory.value.length)
+const totalViews = computed(() => postsWithCategory.value.reduce((sum, p) => sum + p.views, 0))
+const totalCategories = computed(() => categoriesWithCount.value.length)
+const totalUsers = computed(() => users.length)
+
+const recentPosts = computed(() => postsWithCategory.value.slice(0, 5))
+
 const timeRange = ref('90d')
 
-const data: Data[] = []
+const chartData: ChartData[] = []
 const startDate = new CalendarDate(2025, 2, 1)
 const endDate = new CalendarDate(2025, 4, 30)
 
 let currentDate = startDate
 while (currentDate.compare(endDate) <= 0) {
   const date = new Date(currentDate.year, currentDate.month - 1, currentDate.day)
-  data.push({
+  chartData.push({
     date,
-    total: Math.floor(Math.random() * 2000) + 500,
+    actual: Math.floor(Math.random() * 2000) + 500,
     predicted: Math.floor(Math.random() * 2000) + 500,
   })
   currentDate = currentDate.add({ days: 1 })
 }
 
 const filteredData = computed(() => {
-  let dataLength = data.length
+  let dataLength = chartData.length
 
   if (timeRange.value === '7d') {
     dataLength = 7
@@ -278,30 +308,30 @@ const filteredData = computed(() => {
     dataLength = 30
   }
 
-  return data.slice(-dataLength)
+  return chartData.slice(-dataLength)
 })
 
 const chartConfig = {
-  total: {
-    label: 'Total',
+  actual: {
+    label: 'Actual Views',
     color: 'var(--chart-1)',
   },
   predicted: {
-    label: 'Predicted',
+    label: 'Predicted Views',
     color: 'var(--chart-2)',
   },
 } satisfies ChartConfig
 
 const svgDefs = `
-  <linearGradient id="fillTotal" x1="0" y1="0" x2="0" y2="1">
+  <linearGradient id="fillActual" x1="0" y1="0" x2="0" y2="1">
     <stop
       offset="5%"
-      stop-color="var(--color-total)"
+      stop-color="var(--color-actual)"
       stop-opacity="0.8"
     />
     <stop
       offset="95%"
-      stop-color="var(--color-total)"
+      stop-color="var(--color-actual)"
       stop-opacity="0.1"
     />
   </linearGradient>
