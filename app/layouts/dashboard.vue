@@ -28,7 +28,7 @@
           </BreadcrumbList>
         </Breadcrumb>
       </header>
-      <div class="flex-1 p-4">
+      <div class="@container/main flex-1 p-4">
         <slot />
       </div>
     </SidebarInset>

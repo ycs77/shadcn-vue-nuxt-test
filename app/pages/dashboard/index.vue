@@ -4,73 +4,97 @@
       Dashboard
     </h1>
 
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card class="gap-0">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle class="text-sm font-medium">
-            Total Posts
-          </CardTitle>
-          <FileTextIcon class="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div class="text-2xl font-bold">
+    <div class="*:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-1 gap-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
+      <Card class="@container/card">
+        <CardHeader>
+          <CardDescription>Total Posts</CardDescription>
+          <CardTitle class="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {{ totalPosts }}
+          </CardTitle>
+          <CardAction>
+            <Badge variant="outline">
+              <TrendingUp />
+              +2
+            </Badge>
+          </CardAction>
+        </CardHeader>
+        <CardFooter class="flex-col items-start gap-1.5 text-sm">
+          <div class="line-clamp-1 flex gap-2 font-medium">
+            Trending up this month <TrendingUp class="size-4" />
           </div>
-          <p class="text-xs text-muted-foreground">
-            +2 new this month
-          </p>
-        </CardContent>
+          <div class="text-muted-foreground">
+            Publishing rate on track
+          </div>
+        </CardFooter>
       </Card>
 
-      <Card class="gap-0">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle class="text-sm font-medium">
-            Total Views
-          </CardTitle>
-          <EyeIcon class="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div class="text-2xl font-bold">
+      <Card class="@container/card">
+        <CardHeader>
+          <CardDescription>Total Views</CardDescription>
+          <CardTitle class="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {{ totalViews.toLocaleString('en-US') }}
+          </CardTitle>
+          <CardAction>
+            <Badge variant="outline">
+              <TrendingUp />
+              +20.1%
+            </Badge>
+          </CardAction>
+        </CardHeader>
+        <CardFooter class="flex-col items-start gap-1.5 text-sm">
+          <div class="line-clamp-1 flex gap-2 font-medium">
+            +20.1% from last month <TrendingUp class="size-4" />
           </div>
-          <p class="text-xs text-muted-foreground">
-            +20.1% from last month
-          </p>
-        </CardContent>
+          <div class="text-muted-foreground">
+            Views across all posts
+          </div>
+        </CardFooter>
       </Card>
 
-      <Card class="gap-0">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle class="text-sm font-medium">
-            Categories
-          </CardTitle>
-          <FolderOpenIcon class="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div class="text-2xl font-bold">
+      <Card class="@container/card">
+        <CardHeader>
+          <CardDescription>Categories</CardDescription>
+          <CardTitle class="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {{ totalCategories }}
+          </CardTitle>
+          <CardAction>
+            <Badge variant="outline">
+              <TrendingUp />
+              +3
+            </Badge>
+          </CardAction>
+        </CardHeader>
+        <CardFooter class="flex-col items-start gap-1.5 text-sm">
+          <div class="line-clamp-1 flex gap-2 font-medium">
+            3 categories with new posts <TrendingUp class="size-4" />
           </div>
-          <p class="text-xs text-muted-foreground">
-            3 categories with new posts
-          </p>
-        </CardContent>
+          <div class="text-muted-foreground">
+            Content diversity growing
+          </div>
+        </CardFooter>
       </Card>
 
-      <Card class="gap-0">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle class="text-sm font-medium">
-            Total Users
-          </CardTitle>
-          <UsersIcon class="h-4 w-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent>
-          <div class="text-2xl font-bold">
+      <Card class="@container/card">
+        <CardHeader>
+          <CardDescription>Total Users</CardDescription>
+          <CardTitle class="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {{ totalUsers }}
+          </CardTitle>
+          <CardAction>
+            <Badge variant="outline">
+              <TrendingUp />
+              +24
+            </Badge>
+          </CardAction>
+        </CardHeader>
+        <CardFooter class="flex-col items-start gap-1.5 text-sm">
+          <div class="line-clamp-1 flex gap-2 font-medium">
+            Steady growth this month <TrendingUp class="size-4" />
           </div>
-          <p class="text-xs text-muted-foreground">
-            +24 new this month
-          </p>
-        </CardContent>
+          <div class="text-muted-foreground">
+            Meets growth projections
+          </div>
+        </CardFooter>
       </Card>
     </div>
 
@@ -161,36 +185,34 @@
       </CardContent>
     </Card>
 
-    <div class="grid gap-4 md:grid-cols-2">
+    <div class="grid gap-4 md:grid-cols-2 *:min-w-0">
       <Card>
         <CardHeader>
           <CardTitle>Recent Posts</CardTitle>
           <CardDescription>Latest 5 published posts</CardDescription>
         </CardHeader>
         <CardContent class="space-y-4">
-          <div
-            v-for="post in recentPosts"
-            :key="post.id"
-            class="flex items-center justify-between gap-4"
-          >
-            <div class="min-w-0 flex-1 space-y-1">
-              <NuxtLink
-                :to="`/dashboard/posts/${post.id}/edit`"
-                class="truncate text-sm font-medium hover:underline"
-              >
-                {{ post.title }}
-              </NuxtLink>
-              <div class="flex items-center gap-2">
-                <Badge variant="outline">
-                  {{ post.categoryName }}
-                </Badge>
-                <Badge :variant="post.status === 'published' ? 'default' : 'secondary'">
-                  {{ post.status }}
-                </Badge>
+          <div v-for="post in recentPosts" :key="post.id">
+            <NuxtLink
+              :to="`/dashboard/posts/${post.id}/edit`"
+              class="block truncate text-sm font-medium hover:underline"
+            >
+              {{ post.title }}
+            </NuxtLink>
+            <div class="mt-1 flex items-end justify-between gap-4">
+              <div class="min-w-0 flex-1 space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <Badge variant="outline">
+                    {{ post.categoryName }}
+                  </Badge>
+                  <Badge :variant="post.status === 'published' ? 'default' : 'secondary'">
+                    {{ post.status }}
+                  </Badge>
+                </div>
               </div>
-            </div>
-            <div class="shrink-0 text-xs text-muted-foreground">
-              {{ post.date }}
+              <div class="shrink-0 text-xs text-muted-foreground">
+                {{ post.date }}
+              </div>
             </div>
           </div>
         </CardContent>
@@ -228,7 +250,7 @@
 import type { ChartConfig } from '@/components/ui/chart'
 import { CalendarDate } from '@internationalized/date'
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
-import { Eye as EyeIcon, FileText as FileTextIcon, FolderOpen as FolderOpenIcon, Users as UsersIcon } from 'lucide-vue-next'
+import { TrendingUp } from 'lucide-vue-next'
 import { users } from '~~/data/users'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -236,6 +258,7 @@ import {
   CardAction,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
