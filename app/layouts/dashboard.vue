@@ -1,8 +1,12 @@
 <template>
-  <SidebarProvider>
-    <AppSidebar />
+  <SidebarProvider
+    :style="{
+      '--header-height': 'calc(var(--spacing) * 12 + 1px)',
+    }"
+  >
+    <AppSidebar variant="inset" />
     <SidebarInset>
-      <header class="flex sticky z-1 top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4">
+      <header class="flex h-(--header-height) shrink-0 bg-background items-center gap-1 border-b px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger class="-ml-1" />
         <Separator
           orientation="vertical"

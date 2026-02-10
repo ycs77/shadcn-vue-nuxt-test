@@ -1,7 +1,19 @@
 <template>
   <Sidebar v-bind="props">
     <SidebarHeader>
-      <TeamSwitcher :teams="data.teams" />
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton
+            as-child
+            class="data-[slot=sidebar-menu-button]:p-1.5!"
+          >
+            <a href="#">
+              <Shell class="size-5" />
+              <span class="text-base font-semibold">Acme Inc.</span>
+            </a>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
     </SidebarHeader>
     <SidebarContent>
       <NavMain :items="data.navMain" />
@@ -9,7 +21,6 @@
     <SidebarFooter>
       <NavUser :user="data.user" />
     </SidebarFooter>
-    <SidebarRail />
   </Sidebar>
 </template>
 
@@ -17,50 +28,32 @@
 import type { SidebarProps } from '@/components/ui/sidebar'
 
 import {
-  AudioWaveform,
-  Command,
   FileText,
-  GalleryVerticalEnd,
   LayoutDashboard,
   Settings,
+  Shell,
   Users,
 } from 'lucide-vue-next'
 import { currentUser } from '~~/data/current-user'
 import NavMain from '@/components/NavMain.vue'
 import NavUser from '@/components/NavUser.vue'
-import TeamSwitcher from '@/components/TeamSwitcher.vue'
 
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarRail,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
 } from '@/components/ui/sidebar'
 
 const props = withDefaults(defineProps<SidebarProps>(), {
-  collapsible: 'icon',
+  collapsible: 'offcanvas',
 })
 
 const data = {
   user: currentUser,
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
   navMain: [
     {
       title: 'Dashboard',
