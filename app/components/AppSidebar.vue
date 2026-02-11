@@ -95,9 +95,9 @@ const data = {
           isActive: '^/dashboard/settings/profile(/|$)',
         },
         {
-          title: 'Account',
-          url: '/dashboard/settings/account',
-          isActive: '^/dashboard/settings/account(/|$)',
+          title: 'Security',
+          url: '/dashboard/settings/security',
+          isActive: '^/dashboard/settings/security(/|$)',
         },
       ],
     },

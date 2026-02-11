@@ -19,7 +19,7 @@ const route = useRoute()
 
 const tabs = [
   { label: 'Profile', to: '/dashboard/settings/profile' },
-  { label: 'Account', to: '/dashboard/settings/account' },
+  { label: 'Security', to: '/dashboard/settings/security' },
 ]
 
 function isActive(path: string) {

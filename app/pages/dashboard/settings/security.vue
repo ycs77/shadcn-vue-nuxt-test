@@ -7,7 +7,7 @@
     <SettingsNav />
 
     <div class="max-w-2xl">
-      <AccountForm
+      <SecurityForm
         :is-loading
         @submit="handleSubmit"
       />
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
-import AccountForm from '@/components/dashboard/settings/AccountForm.vue'
+import SecurityForm from '@/components/dashboard/settings/SecurityForm.vue'
 import SettingsNav from '@/components/dashboard/settings/SettingsNav.vue'
 
 definePageMeta({
@@ -25,12 +25,12 @@ definePageMeta({
   breadcrumbs: [
     { title: 'Dashboard', url: '/dashboard' },
     { title: 'Settings', url: '/dashboard/settings/profile' },
-    { title: 'Account' },
+    { title: 'Security' },
   ],
 })
 
 useSeoMeta({
-  title: 'Account Settings',
+  title: 'Security Settings',
 })
 
 const isLoading = ref(false)
