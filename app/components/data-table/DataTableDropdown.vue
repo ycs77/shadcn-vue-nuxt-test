@@ -23,8 +23,7 @@
   </DropdownMenu>
 </template>
 
-<script setup lang="ts" generic="TData extends Model">
-import type { Model } from '~~/shared/types/model'
+<script setup lang="ts">
 import { MoreHorizontal, Pencil, Trash2 } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import {
@@ -36,11 +35,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 defineProps<{
-  row: TData
+  row: Record<string, any>
 }>()
 
 const emit = defineEmits<{
-  edit: [row: TData]
-  delete: [row: TData]
+  edit: [row: any]
+  delete: [row: any]
 }>()
 </script>

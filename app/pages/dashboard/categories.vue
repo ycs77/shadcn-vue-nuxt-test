@@ -35,14 +35,16 @@
 </template>
 
 <script setup lang="ts">
+import type { ColumnDef } from '@tanstack/vue-table'
 import type { Ref } from 'vue'
-import type { Category } from '~~/shared/types/category'
-import { Plus } from 'lucide-vue-next'
+import type { Category, CategoryWithCount } from '~~/shared/types/category'
+import { ArrowUpDown, Plus } from 'lucide-vue-next'
+import { h } from 'vue'
 import { toast } from 'vue-sonner'
 import CategoryDeleteDialog from '@/components/dashboard/categories/CategoryDeleteDialog.vue'
 import CategoryFormDialog from '@/components/dashboard/categories/CategoryFormDialog.vue'
-import { createColumns } from '@/components/dashboard/categories/columns'
 import DataTable from '@/components/data-table/DataTable.vue'
+import DataTableDropdown from '@/components/data-table/DataTableDropdown.vue'
 import { Button } from '@/components/ui/button'
 
 definePageMeta({
@@ -60,10 +62,51 @@ useSeoMeta({
 
 const { categoriesWithCount } = useCategories()
 
-const columns = createColumns({
-  onEdit: openEditDialog,
-  onDelete: openDeleteDialog,
-})
+const columns: ColumnDef<CategoryWithCount>[] = [
+  {
+    accessorKey: 'id',
+    header: ({ column }) => {
+      return h(Button, {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+      }, () => ['ID', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })])
+    },
+    cell: ({ row }) => h('div', row.getValue('id')),
+  },
+  {
+    accessorKey: 'name',
+    header: ({ column }) => {
+      return h(Button, {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+      }, () => ['Name', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })])
+    },
+    cell: ({ row }) => h('div', { class: 'font-medium' }, row.getValue('name')),
+  },
+  {
+    accessorKey: 'postCount',
+    header: ({ column }) => {
+      return h(Button, {
+        variant: 'ghost',
+        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+      }, () => ['Posts', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })])
+    },
+    cell: ({ row }) => h('div', row.getValue('postCount')),
+  },
+  {
+    id: 'actions',
+    enableSorting: false,
+    enableHiding: false,
+    header: () => h('span', { class: 'sr-only' }, 'Actions'),
+    cell: ({ row }) => {
+      return h('div', { class: 'relative' }, h(DataTableDropdown, {
+        row: row.original,
+        onEdit: openEditDialog,
+        onDelete: openDeleteDialog,
+      }))
+    },
+  },
+]
 
 // Form dialog state
 const formDialogOpen = ref(false)
