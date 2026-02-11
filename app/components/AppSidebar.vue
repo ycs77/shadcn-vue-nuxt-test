@@ -7,10 +7,9 @@
             as-child
             class="data-[slot=sidebar-menu-button]:p-1.5!"
           >
-            <a href="#">
-              <Shell class="size-5" />
-              <span class="text-base font-semibold">Acme Inc.</span>
-            </a>
+            <NuxtLink to="/dashboard">
+              <span class="text-base font-semibold font-[Merriweather]">{{ appConfig.title }}</span>
+            </NuxtLink>
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
@@ -31,7 +30,6 @@ import {
   FileText,
   LayoutDashboard,
   Settings,
-  Shell,
   Users,
 } from 'lucide-vue-next'
 import { currentUser } from '~~/data/current-user'
@@ -51,6 +49,8 @@ import {
 const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: 'offcanvas',
 })
+
+const appConfig = useAppConfig()
 
 const data = {
   user: currentUser,
