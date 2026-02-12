@@ -17,5 +17,8 @@
       "mcp__shadcn-vue__get_add_command_for_items",
       "mcp__shadcn-vue__get_audit_checklist"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "shadcn-vue"
+  ]
 }
