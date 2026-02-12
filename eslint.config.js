@@ -1,4 +1,4 @@
-import ycs77, { GLOB_VUE } from '@ycs77/eslint-config'
+import ycs77 from '@ycs77/eslint-config'
 
 export default ycs77({
   vue: true,
@@ -7,11 +7,5 @@ export default ycs77({
   .append({
     rules: {
       'no-console': 'off',
-    },
-  })
-  .append({
-    files: [GLOB_VUE],
-    rules: {
-      'vue/one-component-per-file': 'off',
     },
   })
