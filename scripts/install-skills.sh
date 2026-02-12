@@ -7,13 +7,13 @@ npx -y skills@latest add antfu/skills \
   --skill nuxt \
   -y
 
-npx -y skills@latest add ./skills \
+npx -y skills@latest add ycs77/skills \
   --agent claude-code \
-  --skill '*' \
+  --skill ycs77-vue \
   -y
 
 # Will remove on PR merged: https://github.com/vercel-labs/skills/pull/314
-mkdir -p .gemini
+mkdir -p .gemini/skills/
 cp -r .agents/skills/* .gemini/skills/
 
 npx -y uipro-cli@latest init --ai claude --ai gemini --force
