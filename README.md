@@ -1,4 +1,4 @@
-# Nuxt + shadcn-vue: An AI Development Experiment
+# AI-Assisted Development Showcase: Nuxt 4 + shadcn-vue
 
 An experimental project exploring AI-assisted full-stack development with Nuxt 4 and shadcn-vue. Features a dual-zone architecture: distraction-free E-Ink style public pages and a comprehensive dashboard with data tables and form validation using mock data.
 
