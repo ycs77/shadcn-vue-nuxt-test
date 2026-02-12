@@ -1,13 +1,13 @@
 #!/bin/bash
 
-npx skills add antfu/skills \
+npx -y skills@latest add antfu/skills \
   --agent claude-code \
   --skill vue \
   --skill vue-best-practices \
   --skill nuxt \
   -y
 
-npx skills add ./skills \
+npx -y skills@latest add ./skills \
   --agent claude-code \
   --skill '*' \
   -y
@@ -16,4 +16,4 @@ npx skills add ./skills \
 mkdir -p .gemini
 cp -r .agents/skills/* .gemini/skills/
 
-npx uipro-cli init --ai claude --ai gemini --force
+npx -y uipro-cli@latest init --ai claude --ai gemini --force
