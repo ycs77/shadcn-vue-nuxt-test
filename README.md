@@ -27,3 +27,7 @@ yarn build
 ```bash
 yarn lint --fix
 ```
+
+## License
+
+[MIT License](LICENSE.md)
