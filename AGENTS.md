@@ -50,8 +50,8 @@ To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 ### Common Patterns
 
 - **Toast** — powered by Sonner. See `app/components/AppToaster.vue` for configuration and styling.
-- **Forms** — use VeeValidate with shadcn-vue `<Field />` components and Zod schema validation. Follow @docs/shadcn-vue/forms/vee-validate.md for all form work.
-- **DataTable** — use the shared components in `app/components/data-table/`. The shared DataTable supports optional search, filter dropdowns, and pagination via props (all off by default). Create a custom DataTable only if shared components lack the needed capability. Follow @docs/shadcn-vue/components/data-table.md for all DataTable work.
+- **Forms** — use VeeValidate with shadcn-vue `<Field />` components and Zod schema validation.
+- **DataTable** — use the shared components in `app/components/data-table/`. The shared DataTable supports optional search, filter dropdowns, and pagination via props (all off by default). Create a custom DataTable only if shared components lack the needed capability.
 
 ## Page Zones
 
@@ -83,8 +83,5 @@ Public pages use an **E-Ink / Paper** style — calm, distraction-free, ultra-mi
   1. `vue`
   2. `vue-best-practices`
   3. `ycs77-vue`
-  4. `nuxt`
-
-- **When working on Nuxt-specific files** (server routes, middleware, plugins, composables, `nuxt.config.ts`), load:
-  1. `ycs77-vue`
-  2. `nuxt`
+  4. `shadcn-vue`
+  5. `nuxt`

@@ -10,6 +10,7 @@ npx -y skills@latest add antfu/skills \
 npx -y skills@latest add ycs77/skills \
   --agent claude-code \
   --skill ycs77-vue \
+  --skill shadcn-vue \
   -y
 
 # Will remove on PR merged: https://github.com/vercel-labs/skills/pull/314
