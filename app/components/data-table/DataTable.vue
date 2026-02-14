@@ -47,14 +47,18 @@
         </TableHeader>
         <TableBody>
           <template v-if="table.getRowModel().rows?.length">
-            <TableRow v-for="row in table.getRowModel().rows" :key="row.id">
+            <TableRow
+              v-for="row in table.getRowModel().rows"
+              :key="row.id"
+              :data-state="row.getIsSelected() ? 'selected' : undefined"
+            >
               <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
                 <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
               </TableCell>
             </TableRow>
           </template>
           <template v-else>
-            <TableEmpty :colspan="columns.length">
+            <TableEmpty :colspan="table.getAllColumns().length">
               {{ emptyText }}
             </TableEmpty>
           </template>
@@ -68,7 +72,7 @@
 </template>
 
 <script setup lang="ts" generic="TData extends Model, TValue">
-import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/vue-table'
+import type { ColumnDef, ColumnFiltersState, RowSelectionState, SortingState } from '@tanstack/vue-table'
 import type { Ref } from 'vue'
 import type { Model } from '~~/shared/types/model'
 import {
@@ -79,6 +83,7 @@ import {
   getSortedRowModel,
   useVueTable,
 } from '@tanstack/vue-table'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import {
   Select,
@@ -120,19 +125,43 @@ const props = withDefaults(defineProps<{
 
 const sorting = ref([]) as Ref<SortingState>
 const columnFilters = ref([]) as Ref<ColumnFiltersState>
+const rowSelection = ref({}) as Ref<RowSelectionState>
+
+const selectColumn: ColumnDef<TData, TValue> = {
+  id: 'select',
+  header: ({ table }) => h(Checkbox, {
+    checked: table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate'),
+    'onUpdate:checked': (value: boolean) => table.toggleAllPageRowsSelected(!!value),
+    ariaLabel: 'Select all',
+  }),
+  cell: ({ row }) => h(Checkbox, {
+    checked: row.getIsSelected(),
+    'onUpdate:checked': (value: boolean) => row.toggleSelected(!!value),
+    ariaLabel: 'Select row',
+  }),
+  enableSorting: false,
+  enableHiding: false,
+}
+
+const columnsWithSelect = computed<ColumnDef<TData, TValue>[]>(() => [
+  selectColumn,
+  ...props.columns,
+])
 
 const table = useVueTable({
   get data() { return props.data },
-  get columns() { return props.columns },
+  get columns() { return columnsWithSelect.value },
   getCoreRowModel: getCoreRowModel(),
   getSortedRowModel: getSortedRowModel(),
   getFilteredRowModel: getFilteredRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
   onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
+  onRowSelectionChange: updaterOrValue => valueUpdater(updaterOrValue, rowSelection),
   state: {
     get sorting() { return sorting.value },
     get columnFilters() { return columnFilters.value },
+    get rowSelection() { return rowSelection.value },
   },
 })
 </script>

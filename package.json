@@ -16,7 +16,7 @@
     "@unovis/ts": "^1.6.4",
     "@unovis/vue": "^1.6.4",
     "@vee-validate/zod": "^4.15.1",
-    "@vueuse/core": "^14.2.0",
+    "@vueuse/core": "^14.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.563.0",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
-    "@vueuse/nuxt": "^14.2.0",
+    "@vueuse/nuxt": "^14.2.1",
     "@ycs77/eslint-config": "^7.0.0",
     "eslint": "^9.39.2",
     "nuxt": "^4.3.0",

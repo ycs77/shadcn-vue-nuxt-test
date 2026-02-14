@@ -43,7 +43,7 @@
 
 ### Installed Components (`app/components/ui/`)
 
-alert-dialog, avatar, badge, breadcrumb, button, calendar, card, chart, collapsible, dialog, dropdown-menu, field, input, label, native-select, popover, select, separator, sheet, sidebar, skeleton, sonner, table, textarea, tooltip
+alert-dialog, avatar, badge, breadcrumb, button, calendar, card, chart, checkbox, collapsible, dialog, dropdown-menu, field, input, label, native-select, popover, select, separator, sheet, sidebar, skeleton, sonner, table, textarea, tooltip
 
 To add new shadcn-vue components: `npx shadcn-vue@latest add <component>`
 
