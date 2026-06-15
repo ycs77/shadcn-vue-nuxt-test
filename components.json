@@ -10,6 +10,8 @@
     "prefix": ""
   },
   "iconLibrary": "lucide",
+  "rtl": false,
+  "pointer": false,
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
