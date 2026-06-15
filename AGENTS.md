@@ -15,7 +15,7 @@
 - `@tanstack/vue-table` — data table utilities (used with shadcn-vue Table)
 - `vee-validate + @vee-validate/zod + zod` — form validation and schema definition
 - `@vueuse/core` — Vue composition utilities
-- `lucide-vue-next` — icon library
+- `@lucide/vue` — icon library
 - `class-variance-authority + clsx + tailwind-merge` — component styling utilities
 
 ## Commands
@@ -73,7 +73,7 @@ Public pages use an **E-Ink / Paper** style — calm, distraction-free, ultra-mi
 - **Font** — Merriweather (Google Fonts) for all public pages, including buttons
 - **Layout** — max-w-2xl centered, no images, no shadows, no rounded corners
 - **Shared blocks** — Navbar (Logo + Sign In) and Footer (Copyright + links) on every public page
-- **Components** — shadcn-vue `Button` and `Separator` with Ink/Paper overrides; icons from `lucide-vue-next`
+- **Components** — shadcn-vue `Button` and `Separator` with Ink/Paper overrides; icons from `@lucide/vue`
 
 ## Skills Activation Rules
 

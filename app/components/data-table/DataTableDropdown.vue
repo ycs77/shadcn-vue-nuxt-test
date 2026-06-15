@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { MoreHorizontal, Pencil, Trash2 } from 'lucide-vue-next'
+import { MoreHorizontal, Pencil, Trash2 } from '@lucide/vue'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,

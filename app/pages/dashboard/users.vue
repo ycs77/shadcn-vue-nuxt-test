@@ -21,7 +21,7 @@
 import type { ColumnDef, FilterFn, SortingFn } from '@tanstack/vue-table'
 import type { User } from '~~/shared/types/user'
 import type { DataTableFilter } from '@/components/data-table/DataTable.vue'
-import { ArrowUpDown } from 'lucide-vue-next'
+import { ArrowUpDown } from '@lucide/vue'
 import { h } from 'vue'
 import DataTable from '@/components/data-table/DataTable.vue'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'

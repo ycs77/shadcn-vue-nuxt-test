@@ -31,7 +31,7 @@ import {
   LayoutDashboard,
   Settings,
   Users,
-} from 'lucide-vue-next'
+} from '@lucide/vue'
 import { currentUser } from '~~/data/current-user'
 import NavMain from '@/components/NavMain.vue'
 import NavUser from '@/components/NavUser.vue'

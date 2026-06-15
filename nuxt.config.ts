@@ -23,13 +23,13 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: [
         '@internationalized/date',
+        '@lucide/vue',
         '@unovis/ts',
         '@unovis/vue',
         '@vue/devtools-core',
         '@vue/devtools-kit',
         'class-variance-authority',
         'clsx',
-        'lucide-vue-next',
         'reka-ui',
         'tailwind-merge',
         'vue-sonner',

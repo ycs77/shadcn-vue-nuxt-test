@@ -38,7 +38,7 @@
 import type { ColumnDef } from '@tanstack/vue-table'
 import type { Ref } from 'vue'
 import type { Category, CategoryWithCount } from '~~/shared/types/category'
-import { ArrowUpDown, Plus } from 'lucide-vue-next'
+import { ArrowUpDown, Plus } from '@lucide/vue'
 import { h } from 'vue'
 import { toast } from 'vue-sonner'
 import CategoryDeleteDialog from '@/components/dashboard/categories/CategoryDeleteDialog.vue'

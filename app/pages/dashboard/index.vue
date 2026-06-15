@@ -249,8 +249,8 @@
 <script setup lang="ts">
 import type { ChartConfig } from '@/components/ui/chart'
 import { CalendarDate } from '@internationalized/date'
+import { TrendingUp } from '@lucide/vue'
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
-import { TrendingUp } from 'lucide-vue-next'
 import { users } from '~~/data/users'
 import { Badge } from '@/components/ui/badge'
 import {

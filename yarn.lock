@@ -816,6 +816,11 @@
   resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
+"@lucide/vue@^1.18.0":
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/@lucide/vue/-/vue-1.18.0.tgz#57bcc6cfe4f13c203a827f3794baec3f11fbf732"
+  integrity sha512-DmnUpDB85PlMZ+ofjZLcKq3JoJnaD1bk7SIj9xwUvqerfNqA6hCLa0/m3gIybH6rdrErABbqvTD8yYJdNqiZ3Q==
+
 "@mapbox/geojson-rewind@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@mapbox/geojson-rewind/-/geojson-rewind-0.5.2.tgz#591a5d71a9cd1da1a0bf3420b3bea31b0fc7946a"
@@ -5539,11 +5544,6 @@ lru-cache@^5.1.1:
   integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
   dependencies:
     yallist "^3.0.2"
-
-lucide-vue-next@^0.577.0:
-  version "0.577.0"
-  resolved "https://registry.yarnpkg.com/lucide-vue-next/-/lucide-vue-next-0.577.0.tgz#840cbc25e748dd69b6abd4133b8c52f8c7fbc052"
-  integrity sha512-py05bAfv9SHVJqscbiOnjcnLlEmOffA58a+7XhZuFxrs6txe1E8VoR1ngWGTYO+9aVKABAz8l3ee3PqiQN9QPA==
 
 magic-regexp@^0.10.0:
   version "0.10.0"
