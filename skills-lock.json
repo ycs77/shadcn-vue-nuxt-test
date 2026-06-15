@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "nuxt": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "skillPath": "skills/nuxt/SKILL.md",
+      "computedHash": "9e8237ec92083db9a6f4c77d5e5bf4b1d9873d670671235bc75455ee1ca39c74"
+    },
+    "shadcn-vue": {
+      "source": "ycs77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn-vue/SKILL.md",
+      "computedHash": "9c666f18949089c9f067220d357266a69ac4b5898c50df3e15f037c8a81479a6"
+    },
+    "vue": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vue/SKILL.md",
+      "computedHash": "9c241141e07e836e4f0537c63e8f929fba3767c2997250be38e699f19b75e3f2"
+    },
+    "vue-best-practices": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "skillPath": "skills/vue-best-practices/SKILL.md",
+      "computedHash": "d7d22c8cb343583c3904692c4d1d7b50382945e433e4f6e053f4aabb9846cbc3"
+    },
+    "ycs77-vue": {
+      "source": "ycs77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ycs77-vue/SKILL.md",
+      "computedHash": "0df3dcffdd7c00d96390bd285731d9d79900808afbabe23d2fd430357c03a8d2"
+    }
+  }
+}

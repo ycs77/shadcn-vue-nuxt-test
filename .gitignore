@@ -29,6 +29,7 @@ logs
 # Agent Skills
 .agents/skills
 .claude/skills
+.codex/skills
 .gemini/skills
 
 # Claude Code
