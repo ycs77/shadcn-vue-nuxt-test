@@ -15,8 +15,5 @@ npx -y skills@latest add ycs77/skills \
   --skill shadcn-vue \
   -y
 
-# Will remove on PR merged: https://github.com/vercel-labs/skills/pull/314
-mkdir -p .gemini/skills/
-cp -r .agents/skills/* .gemini/skills/
-
-npx -y uipro-cli@latest init --ai claude --ai codex --ai gemini --force
+npx -y uipro-cli@latest init --ai claude
+npx -y uipro-cli@latest init --ai codex
