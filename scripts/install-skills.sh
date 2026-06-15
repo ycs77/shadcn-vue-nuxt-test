@@ -12,6 +12,11 @@ npx -y skills@latest add ycs77/skills \
   --agent claude-code \
   --agent codex \
   --skill ycs77-vue \
+  -y
+
+npx -y skills@latest add unovue/shadcn-vue \
+  --agent claude-code \
+  --agent codex \
   --skill shadcn-vue \
   -y
 
