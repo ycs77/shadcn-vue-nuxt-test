@@ -6,7 +6,7 @@
   >
     <AppSidebar variant="inset" />
     <SidebarInset>
-      <header class="flex h-(--header-height) shrink-0 bg-background items-center gap-1 border-b px-4 lg:gap-2 lg:px-6">
+      <header class="flex h-(--header-height) shrink-0 items-center gap-1 border-b px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger class="-ml-1" />
         <Separator
           orientation="vertical"
